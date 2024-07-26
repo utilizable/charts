@@ -1,20 +1,28 @@
+#
+# DES: ArgoCD apps of apps
+# URL: 
+#
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: applicationset
   namespace: argocd
 spec:
-  project: infrastructure
-  sources::
+  project: default
+  sources:
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: democratic-csi/argocd
+      path: applications/democratic-csi/argocd
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: sealed-secrets/argocd
+      path: applications/sealed-secrets/argocd
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+...
