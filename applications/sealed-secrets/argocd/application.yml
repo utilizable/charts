@@ -15,7 +15,7 @@ spec:
     targetRevision: HEAD
     path: applications/sealed-secrets/manifests/
   - repoURL: 'https://bitnami-labs.github.io/sealed-secrets'
-    targetRevision: 2.1.0
+    targetRevision: 2.7.4
     chart: sealed-secrets
   destination:
     server: 'https://kubernetes.default.svc'
