@@ -1,3 +1,7 @@
+#
+# DES: csi storage for container orchestration systems 
+# URL: https://github.com/democratic-csi/democratic-csi
+# 
 ---
 csiDriver:
   name: "nfs"
@@ -20,6 +24,8 @@ storageClasses:
     node-publish-secret:
     controller-expand-secret:
 driver:
+  # https://github.com/democratic-csi/charts/blob/b08d58f079d3ac812a75454c4d992f10c830af04/stable/democratic-csi/values.yaml#L21
   existingConfigSecret: democratic-csi-driver-config
   config:
     driver: freenas-api-nfs
+...
