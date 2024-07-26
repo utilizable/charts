@@ -9,7 +9,7 @@ metadata:
   name: democratic-csi
   namespace: argocd
 spec:
-  project: default
+  project: infrastructure
   sources:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
