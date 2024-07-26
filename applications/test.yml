@@ -1,5 +1,3 @@
----
 services:
-- path: applications/sealed-secrets/argocd/application.yml
-- path: applications/democratic-csi/argocd/application.yml
-...
+  - path: applications/sealed-secrets/argocd/application.yml
+  - path: applications/democratic-csi/argocd/application.yml
