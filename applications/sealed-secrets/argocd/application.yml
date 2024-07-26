@@ -9,6 +9,7 @@ metadata:
   name: sealed-secrets
   namespace: argocd
   annotations:
+    # https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
