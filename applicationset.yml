@@ -5,10 +5,13 @@ metadata:
   namespace: argocd
 spec:
   project: infrastructure
-  source:
-    repoURL: 'https://github.com/utilizable/charts'
-    targetRevision: HEAD
-    path: democratic-csi/argocd
+  sources::
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: democratic-csi/argocd
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: sealed-secrets/argocd
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
