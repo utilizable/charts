@@ -8,18 +8,21 @@ kind: Application
 metadata:
   name: sealed-secrets
   namespace: argocd
-  metadata:
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: infrastructure
   sources:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
-    path: sealed-secrets/manifests/
-  - repoURL: 'https://bitnami-labs.github.io/sealed-secrets/'
-    chart: sealed-secrets-controller
-    targetRevision: 1.16.1
+    path: democratic-csi/manifests/
+  - repoURL: 'https://democratic-csi.github.io/charts/'
+    chart: democratic-csi
+    targetRevision: 0.14.6
+    helm:
+      valueFiles:
+        - $values/democratic-csi/helm/values.yaml
+  - repoURL: 'https://github.com/utilizable/charts'
+    targetRevision: HEAD
+    ref: values
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
