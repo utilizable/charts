@@ -8,9 +8,8 @@ kind: Application
 metadata:
   name: sealed-secrets
   namespace: argocd
-  metadata:
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: infrastructure
   sources:
