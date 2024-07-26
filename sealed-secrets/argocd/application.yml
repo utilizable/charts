@@ -6,7 +6,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: democratic-csi
+  name: sealed-secrets
   namespace: argocd
 spec:
   project: infrastructure
@@ -15,7 +15,7 @@ spec:
     targetRevision: HEAD
     path: sealed-secrets/manifests/
   - repoURL: 'https://bitnami-labs.github.io/sealed-secrets/'
-    chart: sealed-secrets
+    chart: sealed-secrets-controller
     targetRevision: 1.16.1
   destination:
     server: 'https://kubernetes.default.svc'
