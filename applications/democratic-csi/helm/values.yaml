@@ -1,7 +1,9 @@
 #
 # DES: csi storage for container orchestration systems 
-# URL: https://github.com/democratic-csi/democratic-csi
-# 
+# URL: 
+#   https://github.com/democratic-csi/democratic-csi
+#   https://github.com/fenio/k8s-truenas
+#
 ---
 csiDriver:
   name: "nfs"
@@ -28,4 +30,28 @@ driver:
   existingConfigSecret: democratic-csi-driver-config
   config:
     driver: freenas-api-nfs
+    instance_id:
+#    httpConnection:
+#      protocol: http
+#      host: 192.168.1.5
+#      port: 80
+#      apiKey: 1-bIojIiah5Mckcc9Ma6YaIqbXVwJu7QT7sgQpgxiV4sorYtHMfAQWMxCbFKd0cilj
+#      allowInsecure: true
+#    zfs:
+#      datasetParentName: lava/datalake
+#      detachedSnapshotsDatasetParentName: laval/snaplake
+#      datasetEnableQuotas: true
+#      datasetEnableReservation: false
+#      datasetPermissionsMode: "0777"
+#      datasetPermissionsUser: 0
+#      datasetPermissionsGroup: 0
+#    nfs:
+#      shareHost: 192.168.1.5
+#      shareAlldirs: false
+#      shareAllowedHosts: []
+#      shareAllowedNetworks: []
+#      shareMaprootUser: root
+#      shareMaprootGroup: root
+#      shareMapallUser: ""
+#      shareMapallGroup: ""
 ...
