@@ -1,0 +1,27 @@
+#
+# DES: ArgoCD application definition for sealed-secrets
+# REF: https://github.com/bitnami-labs/sealed-secrets
+#
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democratic-csi
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+  - repoURL: 'https://github.com/utilizable/charts'
+    targetRevision: HEAD
+    path: sealed-secrets/manifests/
+  - repoURL: 'https://bitnami-labs.github.io/sealed-secrets/'
+    chart: sealed-secrets
+    targetRevision: 1.16.1
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+...
