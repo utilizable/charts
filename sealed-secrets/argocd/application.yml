@@ -8,16 +8,18 @@ kind: Application
 metadata:
   name: sealed-secrets
   namespace: argocd
+  metadata:
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: infrastructure
-  source:
-    repoURL: 'https://github.com/utilizable/charts'
+  sources:
+  - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     path: sealed-secrets/manifests/
-    helm:
-      chart: sealed-secrets-controller
-      repoURL: 'https://bitnami-labs.github.io/sealed-secrets/'
-      targetRevision: 1.16.1
+  - repoURL: 'https://bitnami-labs.github.io/sealed-secrets/'
+    chart: sealed-secrets-controller
+    targetRevision: 1.16.1
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
