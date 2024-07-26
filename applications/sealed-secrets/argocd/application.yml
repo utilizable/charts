@@ -9,7 +9,7 @@ metadata:
   name: sealed-secrets
   namespace: argocd
 spec:
-  project: infrastructure
+  project: default
   sources:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
