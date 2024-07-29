@@ -17,6 +17,9 @@ spec:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     path: applications/sealed-secrets/manifests/
+    syncPolicy:
+      automated:
+        prune: false    
   - repoURL: 'https://bitnami-labs.github.io/sealed-secrets'
     targetRevision: 2.7.4
     chart: sealed-secrets
