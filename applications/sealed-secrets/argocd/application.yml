@@ -26,9 +26,15 @@ spec:
     helm:
       valueFiles:
         - $values/applications/sealed-secrets/helm/values.yaml
+    syncPolicy:
+      automated:
+        prune: false    
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     ref: values
+    syncPolicy:
+      automated:
+        prune: false    
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
