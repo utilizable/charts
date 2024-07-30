@@ -6,24 +6,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: democratic-csi-iscsi
+  name: democratic-csi-nfs
   namespace: argocd
 spec:
   project: default
   sources:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
-    path: applications/democratic-csi/democratic-csi-iscsi/manifests/
+    path: applications/democratic-csi/nfs/manifests/
   - repoURL: 'https://democratic-csi.github.io/charts/'
     chart: democratic-csi
     targetRevision: 0.14.6
     helm:
       values: |
-        fullnameOverride: democratic-csi-iscsi
+        fullnameOverride: democratic-csi-nfs
         driver:
-          existingConfigSecret: democratic-driver-config-iscsi
+          existingConfigSecret: democratic-driver-config-nfs
       valueFiles:
-        - $values/applications/democratic-csi/democratic-csi-iscsi/helm/values.yaml
+        - $values/applications/democratic-csi/nfs/helm/values.yaml
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     ref: values
