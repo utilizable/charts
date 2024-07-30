@@ -35,6 +35,7 @@ spec:
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
       path: applications/sealed-secrets/argocd
+
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
