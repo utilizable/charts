@@ -13,7 +13,7 @@ spec:
   sources:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
-    path: applications/democratic-csi/manifests/
+    path: applications/democratic-csi/democratic-csi-nfs/manifests/
   - repoURL: 'https://democratic-csi.github.io/charts/'
     chart: democratic-csi
     targetRevision: 0.14.6
@@ -23,7 +23,7 @@ spec:
         driver:
           existingConfigSecret: democratic-driver-config-nfs
       valueFiles:
-        - $values/applications/democratic-csi/helm/values.yaml
+        - $values/applications/democratic-csi/democratic-csi-nfs/helm/values.yaml
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     ref: values
