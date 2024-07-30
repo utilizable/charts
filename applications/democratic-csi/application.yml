@@ -13,10 +13,10 @@ spec:
   sources:
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: applications/democratic-csi/
+      path: applications/democratic-csi/democratic-csi-nfs/argocd/
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: applications/sealed-secrets/argocd
+      path: applications/democratic-csi/democratic-csi-iscsi/argocd/
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
