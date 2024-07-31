@@ -1,2 +1,2 @@
-secretName: sealed-secrets-keyxtjd9
+secretName: sealed-secrets-key
 fullnameOverride: sealed-secrets-controller
