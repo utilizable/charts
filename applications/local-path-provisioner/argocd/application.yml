@@ -1,0 +1,27 @@
+#
+# DES: Local Path Provisioner provides a way for the Kubernetes users to utilize the local storage in each node.
+# REF: https://github.com/rancher/local-path-provisioner/tree/master/deploy/chart/local-path-provisioner
+#
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-path-provisioner
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rancher/local-path-provisioner
+    targetRevision: HEAD
+    chart: deploy/chart/local-path-provisioner
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: local-path-storage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+...
