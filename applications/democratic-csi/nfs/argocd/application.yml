@@ -6,7 +6,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: democratic-csi-nfs
+  name: democratic-csi
   namespace: argocd
 spec:
   project: default
