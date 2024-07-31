@@ -26,4 +26,28 @@ storageClasses:
 driver:
   config:
     driver: freenas-api-iscsi
+    zfs:
+      datasetParentName: lava/iscsi/v
+      detachedSnapshotsDatasetParentName: lava/iscsi/s
+      zvolCompression:
+      zvolDedup:
+      zvolEnableReservation: false
+      zvolBlocksize:
+    iscsi:
+      targetPortal: "192.168.1.5:3260"
+      targetPortals: []
+      interface:
+      namePrefix: csi-
+      nameSuffix: "-cluster"
+      targetGroups:
+        - targetGroupPortalGroup: 1 # obtained from truenas iscsi-share properties
+          targetGroupInitiatorGroup: 3 # obtained from truenas iscsi-share properties
+          targetGroupAuthType: None
+          targetGroupAuthGroup:
+      extentInsecureTpc: true
+      extentXenCompat: false
+      extentDisablePhysicalBlocksize: true
+      extentBlocksize: 512
+      extentRpm: "SSD"
+      extentAvailThreshold: 0
 ...
