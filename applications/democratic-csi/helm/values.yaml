@@ -29,8 +29,8 @@ driver:
   # https://github.com/democratic-csi/charts/blob/b08d58f079d3ac812a75454c4d992f10c830af04/stable/democratic-csi/values.yaml#L21
   #existingConfigSecret: democratic-driver-config-nfs
   config:
-    driver: freenas-api-nfs
-    instance_id:
+#    driver:
+#    instance_id:
 #    httpConnection:
 #      protocol: http
 #      host: 192.168.1.5
