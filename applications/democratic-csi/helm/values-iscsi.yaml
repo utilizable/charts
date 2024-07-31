@@ -1,0 +1,32 @@
+#
+# DES: csi storage for container orchestration systems 
+# URL: 
+#   https://github.com/democratic-csi/democratic-csi
+#   https://github.com/fenio/k8s-truenas
+#
+---
+csiDriver:
+  name: "iscsi"
+storageClasses:
+- name: iscsi
+  defaultClass: false
+  reclaimPolicy: Delete
+  volumeBindingMode: Immediate
+  allowVolumeExpansion: true
+  parameters:
+    fsType: ext4
+    detachedVolumesFromSnapshots: "false"
+  mountOptions: []
+  secrets:
+    provisioner-secret:
+    controller-publish-secret:
+    node-stage-secret:
+    node-publish-secret:
+    controller-expand-secret:
+volumeSnapshotClasses:
+- name: iscsi
+  parameters:
+    detachedSnapshots: "true"
+driver:
+  config:
+...
