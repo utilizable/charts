@@ -18,9 +18,9 @@ spec:
     chart: democratic-csi
     targetRevision: 0.14.6
     helm:
-#      values: |
-#        driver:
-#          existingConfigSecret: democratic-driver-config-nfs
+      values: |
+        driver:
+          existingConfigSecret: democratic-driver-config-nfs
       valueFiles:
         - $values/applications/democratic-csi/helm/values.yaml
   - repoURL: 'https://github.com/utilizable/charts'
