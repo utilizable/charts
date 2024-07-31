@@ -7,7 +7,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nfs
-  namespace: argocd
+  namespace: democratic-csi-argocd
 spec:
   project: default
   sources:
@@ -19,7 +19,7 @@ spec:
     targetRevision: 0.14.6
     helm:
       values: |
-        #fullnameOverride: nfs
+        fullnameOverride: 
         driver:
           existingConfigSecret: democratic-driver-config-nfs
       valueFiles:
