@@ -1,5 +1,1 @@
 secretName: sealed-secrets-key
-fullnameOverride: sealed-secrets-controller
-
-service:
-  type: LoadBalancer
