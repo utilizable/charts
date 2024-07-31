@@ -29,5 +29,5 @@ volumeSnapshotClasses:
     detachedSnapshots: "true"
 driver:
   config:
-    driver:
+    driver: freenas-api-iscsi
 ...
