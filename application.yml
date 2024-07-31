@@ -45,6 +45,14 @@ spec:
       path: applications/nvidia-device-plugin/argocd
 
       ####################
+      # NVIDIA GPU OPERATOR 
+      ####################
+      
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: applications/nvidia-gpu-operator/argocd
+
+      ####################
       # LOCAL PATH PROVISIONER 
       ####################
       
