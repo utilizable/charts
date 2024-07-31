@@ -10,8 +10,10 @@ metadata:
 spec:
   ports:
   - port: 8080
+    protocol: TCP
     targetPort: 8080
   selector:
-    name: sealed-secrets-controller
+    app.kubernetes.io/instance: sealed-secrets-controller
+    app.kubernetes.io/name: sealed-secrets-controller
   type: ClusterIP
 ...
