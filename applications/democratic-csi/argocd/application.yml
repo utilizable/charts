@@ -19,8 +19,19 @@ spec:
     targetRevision: 0.14.6
     helm:
       values: |
+        fullnameOverride: democratic-csi-nfs
         driver:
           existingConfigSecret: democratic-driver-config-nfs
+      valueFiles:
+        - $values/applications/democratic-csi/helm/values.yaml
+  - repoURL: 'https://democratic-csi.github.io/charts/'
+    chart: democratic-csi
+    targetRevision: 0.14.6
+    helm:
+      values: |
+        fullnameOverride: democratic-csi-iscsi
+        driver:
+          existingConfigSecret: democratic-driver-config-iscsi
       valueFiles:
         - $values/applications/democratic-csi/helm/values.yaml
   - repoURL: 'https://github.com/utilizable/charts'
