@@ -1,2 +1,2 @@
-nameOverride: -controller
+nameOverride: controller
 secretName: sealed-secrets-keyxtjd9
