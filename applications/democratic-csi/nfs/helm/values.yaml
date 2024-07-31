@@ -32,29 +32,29 @@ driver:
     driver: freenas-api-nfs
     instance_id:
   
- # This config will be overwriten by secret  
- 
-    httpConnection:
-      protocol: http
-      host: "CHANGE-ME"
-      port: 80
-      apiKey: "CHANGE-ME"
-      allowInsecure: true
-    zfs:
-      datasetParentName: "CHANGE-ME"
-      detachedSnapshotsDatasetParentName: "CHANGE-ME"
-      datasetEnableQuotas: true
-      datasetEnableReservation: false
-      datasetPermissionsMode: "0777"
-      datasetPermissionsUser: 0
-      datasetPermissionsGroup: 0
-    nfs:
-      shareHost: "CHANGE-ME"
-      shareAlldirs: false
-      shareAllowedHosts: []
-      shareAllowedNetworks: []
-      shareMaprootUser: "CHANGE-ME"
-      shareMaprootGroup: "CHANGE-ME"
-      shareMapallUser: ""
-      shareMapallGroup: ""
+# This config will be overwriten by secret
+# -------
+#    httpConnection:
+#      protocol: http
+#      host: "CHANGE-ME"
+#      port: 80
+#      apiKey: "CHANGE-ME"
+#      allowInsecure: true
+#    zfs:
+#      datasetParentName: "CHANGE-ME"
+#      detachedSnapshotsDatasetParentName: "CHANGE-ME"
+#      datasetEnableQuotas: true
+#      datasetEnableReservation: false
+#      datasetPermissionsMode: "0777"
+#      datasetPermissionsUser: 0
+#      datasetPermissionsGroup: 0
+#    nfs:
+#      shareHost: "CHANGE-ME"
+#      shareAlldirs: false
+#      shareAllowedHosts: []
+#      shareAllowedNetworks: []
+#      shareMaprootUser: "CHANGE-ME"
+#      shareMaprootGroup: "CHANGE-ME"
+#      shareMapallUser: ""
+#      shareMapallGroup: ""
 ...
