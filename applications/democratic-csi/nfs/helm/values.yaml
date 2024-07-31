@@ -30,28 +30,31 @@ driver:
   #existingConfigSecret: democratic-driver-config-nfs
   config:
     driver: freenas-api-nfs
-#    instance_id:
-#    httpConnection:
-#      protocol: http
-#      host: 192.168.1.5
-#      port: 80
-#      apiKey: 1-bIojIiah5Mckcc9Ma6YaIqbXVwJu7QT7sgQpgxiV4sorYtHMfAQWMxCbFKd0cilj
-#      allowInsecure: true
-#    zfs:
-#      datasetParentName: lava/datalake
-#      detachedSnapshotsDatasetParentName: laval/snaplake
-#      datasetEnableQuotas: true
-#      datasetEnableReservation: false
-#      datasetPermissionsMode: "0777"
-#      datasetPermissionsUser: 0
-#      datasetPermissionsGroup: 0
-#    nfs:
-#      shareHost: 192.168.1.5
-#      shareAlldirs: false
-#      shareAllowedHosts: []
-#      shareAllowedNetworks: []
-#      shareMaprootUser: root
-#      shareMaprootGroup: root
-#      shareMapallUser: ""
-#      shareMapallGroup: ""
+    instance_id:
+  
+ # This config will be overwriten by secret  
+ 
+    httpConnection:
+      protocol: http
+      host: "CHANGE-ME"
+      port: 80
+      apiKey: "CHANGE-ME"
+      allowInsecure: true
+    zfs:
+      datasetParentName: "CHANGE-ME"
+      detachedSnapshotsDatasetParentName: "CHANGE-ME"
+      datasetEnableQuotas: true
+      datasetEnableReservation: false
+      datasetPermissionsMode: "0777"
+      datasetPermissionsUser: 0
+      datasetPermissionsGroup: 0
+    nfs:
+      shareHost: "CHANGE-ME"
+      shareAlldirs: false
+      shareAllowedHosts: []
+      shareAllowedNetworks: []
+      shareMaprootUser: "CHANGE-ME"
+      shareMaprootGroup: "CHANGE-ME"
+      shareMapallUser: ""
+      shareMapallGroup: ""
 ...
