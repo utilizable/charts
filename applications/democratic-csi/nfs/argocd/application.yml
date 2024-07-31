@@ -19,7 +19,7 @@ spec:
     targetRevision: 0.14.6
     helm:
       values: |
-        fullnameOverride: democratic-csi-nfs
+        fullnameOverride: nfs
         driver:
           existingConfigSecret: democratic-driver-config-nfs
       valueFiles:
