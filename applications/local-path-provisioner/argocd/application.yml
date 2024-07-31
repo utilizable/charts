@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: 'https://github.com/rancher/local-path-provisioner'
     targetRevision: HEAD
-    path: deploy/chart/local-path-provisioner
+    path: ./deploy/chart/local-path-provisioner
   destination:
     server: https://kubernetes.default.svc
     namespace: local-path-storage
