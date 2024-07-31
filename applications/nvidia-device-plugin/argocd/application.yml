@@ -10,29 +10,32 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://nvidia.github.io/k8s-device-plugin
-    chart: nvidia-device-plugin
-    targetRevision: 0.16.0
-    helm:
-      parameters:
-        - name: gfd.enabled
-          value: "true"
-        - name: config.default
-          value: mps10
-        - name: runtimeClassName
-          value: nvidia
-        - name: config.map.mps10
-          value: |
-            version: v1
-            sharing:
-              mps:
-                resources:
-                  - name: nvidia.com/gpu
-                    replicas: 3 
+  sources:
+    - repoURL: https://nvidia.github.io/k8s-device-plugin
+      chart: nvidia-device-plugin
+      targetRevision: 0.16.0
+      helm:
+        parameters:
+          - name: gfd.enabled
+            value: "true"
+          - name: config.default
+            value: mps10
+          - name: runtimeClassName
+            value: nvidia
+          - name: config.map.mps10
+            value: |
+              version: v1
+              sharing:
+                mps:
+                  resources:
+                    - name: nvidia.com/gpu
+                      replicas: 3 
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: applications/sealed-secrets/manifests/
   destination:
     server: https://kubernetes.default.svc
-    namespace: nidia-device-plugin
+    namespace: vidia-device-plugin-test
   syncPolicy:
     automated:
       prune: true
