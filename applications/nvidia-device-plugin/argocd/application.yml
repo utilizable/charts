@@ -35,7 +35,7 @@ spec:
       path: applications/sealed-secrets/manifests/
   destination:
     server: https://kubernetes.default.svc
-    namespace: vidia-device-plugin-test
+    namespace: nidia-device-plugin
   syncPolicy:
     automated:
       prune: true
