@@ -6,7 +6,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: iscsi
+  name: democratic-csi-iscsi
   namespace: argocd
 spec:
   project: default
@@ -19,7 +19,7 @@ spec:
     targetRevision: 0.14.6
     helm:
       values: |
-        #fullnameOverride: iscsi
+        fullnameOverride:
         driver:
           existingConfigSecret: democratic-driver-config-iscsi
       valueFiles:
