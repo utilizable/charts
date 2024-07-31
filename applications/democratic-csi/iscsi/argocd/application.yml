@@ -6,7 +6,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: democratic-csi-iscsi
+  name: iscsi
   namespace: argocd
 spec:
   project: default
