@@ -26,15 +26,24 @@ storageClasses:
 driver:
   config:
     driver: freenas-api-iscsi
+
+ # This config will be overwriten by secret   
+    instance_id:
+    httpConnection:
+      protocol: http
+      host: "hostname / ip"
+      port: 80
+      apiKey: "truenas api-key"
+      allowInsecure: true    
     zfs:
-      datasetParentName: lava/iscsi/v
-      detachedSnapshotsDatasetParentName: lava/iscsi/s
+      datasetParentName: "iscsi/dataset"
+      detachedSnapshotsDatasetParentName: "iscsi/snapshot"
       zvolCompression:
       zvolDedup:
       zvolEnableReservation: false
       zvolBlocksize:
     iscsi:
-      targetPortal: "192.168.1.5:3260"
+      targetPortal: "hostname / ip"
       targetPortals: []
       interface:
       namePrefix: csi-
