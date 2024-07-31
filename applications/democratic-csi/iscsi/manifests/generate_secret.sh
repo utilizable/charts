@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Truenas config:
+# https://github.com/fenio/k8s-truenas
+
 # Kubeseal:
 # https://github.com/bitnami-labs/sealed-secrets?tab=readme-ov-file#linux
 
