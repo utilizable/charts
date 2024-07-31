@@ -17,15 +17,13 @@ spec:
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     path: applications/sealed-secrets/manifests/
-  - repoURL: 'https://github.com/bitnami-labs/sealed-secrets'
-    targetRevision: 'v0.27.1'
-    path: 'charts/sealed-secrets'
-#  - repoURL: 'https://bitnami-labs.github.io/sealed-secrets'
-#    targetRevision: 2.16.1
-#    chart: sealed-secrets
-#    helm:
-#      valueFiles:
-#        - $values/applications/sealed-secrets/helm/values.yaml
+  - repoURL: 'https://bitnami-labs.github.io/sealed-secrets'
+    #targetRevision: 2.16.1
+    targetRevision: HEAD
+    chart: sealed-secrets
+    helm:
+      valueFiles:
+        - $values/applications/sealed-secrets/helm/values.yaml
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     ref: values
