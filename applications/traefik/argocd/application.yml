@@ -17,9 +17,6 @@ spec:
   - repoURL: 'https://traefik.github.io/charts'
     targetRevision: 30.0.2
     chart: traefik
-    helm:
-      valueFiles:
-        - $values/applications/sealed-secrets/helm/values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
