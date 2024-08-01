@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/rancher/local-path-provisioner
-    targetRevision: HEAD
+    targetRevision: master
     chart: deploy/chart/local-path-provisioner
   destination:
     server: https://kubernetes.default.svc
