@@ -29,7 +29,7 @@ spec:
     ref: values
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: democratic-csi
+    namespace: democratic-csi-nfs
   syncPolicy:
     automated:
       prune: true
