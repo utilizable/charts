@@ -40,9 +40,9 @@ spec:
       # NVIDIA DEVICE PLUGIN
       ####################
       
-    #- repoURL: 'https://github.com/utilizable/charts'
-    #  targetRevision: HEAD
-    #  path: applications/nvidia-device-plugin/argocd
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: applications/nvidia-device-plugin/argocd
 
   destination:
     server: 'https://kubernetes.default.svc'
