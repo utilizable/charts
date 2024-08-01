@@ -10,7 +10,7 @@ cat <<EOF | kubeseal -o yaml -w sealed-secret.yml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: democratic-driver-config-iscsi
+  name: democratic-driver-config-nfs
   namespace: democratic-csi
 type: Opaque
 stringData:
