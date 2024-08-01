@@ -19,7 +19,7 @@ spec:
     chart: traefik
     helm:
       valueFiles:
-        - $values/applications/traefik/helm/values.yaml
+        - $values/applications/traefik/helm/values.yml
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     ref: values
