@@ -60,6 +60,14 @@ spec:
       targetRevision: HEAD
       path: applications/local-path-provisioner/argocd
 
+      ####################
+      # TRAEFIK 
+      ####################
+      
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: applications/traefik/argocd
+
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
