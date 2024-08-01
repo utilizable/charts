@@ -32,7 +32,7 @@ spec:
                       replicas: 3 
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: applications/sealed-secrets/manifests/
+      path: applications/nvidia-device-plugin/manifests/
   destination:
     server: https://kubernetes.default.svc
     namespace: nidia-device-plugin
