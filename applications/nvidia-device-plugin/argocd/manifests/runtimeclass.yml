@@ -1,0 +1,10 @@
+#
+# https://www.declarativesystems.com/2023/11/04/kubernetes-nvidia.html
+#
+---
+apiVersion: node.k8s.io/v1
+kind: RuntimeClass
+metadata:
+  name: nvidia
+handler: nvidia
+...
