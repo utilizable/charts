@@ -19,6 +19,7 @@ spec:
     targetRevision: 0.14.6
     helm:
       values: |
+        fullnameOverride: democratic-csi
         driver:
           existingConfigSecret: democratic-driver-config-iscsi
       valueFiles:
@@ -28,7 +29,7 @@ spec:
     ref: values
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: democratic-csi
+    namespace: democratic-csi-iscsi
   syncPolicy:
     automated:
       prune: true
