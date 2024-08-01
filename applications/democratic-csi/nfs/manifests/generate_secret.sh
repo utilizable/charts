@@ -32,7 +32,7 @@ stringData:
       datasetPermissionsUser: 0
       datasetPermissionsGroup: 0
     nfs:
-      shareHost: "CHANGE-ME"
+      shareHost: "CHANGE-ME" # <----
       shareAlldirs: false
       shareAllowedHosts: []
       shareAllowedNetworks: []
