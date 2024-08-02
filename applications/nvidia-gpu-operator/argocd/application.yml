@@ -13,16 +13,16 @@ spec:
     - repoURL: https://helm.ngc.nvidia.com/nvidia
       chart: gpu-operator
       targetRevision: v24.6.0
-      helm:
-        values: |
-          toolkit:
-            env:
-              - name: DOCKER_SOCKET
-                value: /var/run/docker.sock
-              - name: DOCKER_RUNTIME_CLASS
-                value: nvidia
-              - name: DOCKER_SET_AS_DEFAULT
-                value: "true"
+#      helm:
+#        values: |
+#          toolkit:
+#            env:
+#              - name: DOCKER_SOCKET
+#                value: /var/run/docker.sock
+#              - name: DOCKER_RUNTIME_CLASS
+#                value: nvidia
+#              - name: DOCKER_SET_AS_DEFAULT
+#                value: "true"
   destination:
     server: https://kubernetes.default.svc
     namespace: gpu-operator
