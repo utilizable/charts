@@ -39,7 +39,16 @@ env:
       secretKeyRef:
         name: ovh-secrets
         key: consumerKey
-
+        
+certResolvers:
+  letsencrypt:
+    email: "{{ letsencrypt_email }}"
+    #caServer: https://acme-v02.api.letsencrypt.org/directory # Production server
+    caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Staging server
+    dnsChallenge:
+      provider: ovh
+    storage: acme.json
+    
 #ports:
 #  web:
 #    redirectTo: 
