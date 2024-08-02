@@ -21,7 +21,7 @@ spec:
           - name: config.default
             value: mps10
           - name: runtimeClassName
-            value: docker
+            value: nvidia
           - name: config.map.mps10
             value: |
               version: v1
