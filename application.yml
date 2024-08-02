@@ -48,9 +48,9 @@ spec:
       # NVIDIA GPU OPERATOR 
       ####################
       
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/nvidia-gpu-operator/argocd
+    #- repoURL: 'https://github.com/utilizable/charts'
+    #  targetRevision: HEAD
+    #  path: applications/nvidia-gpu-operator/argocd
 
       ####################
       # LOCAL PATH PROVISIONER 
