@@ -42,7 +42,7 @@ env:
         
 certResolvers:
   letsencrypt:
-    email: "{{ letsencrypt_email }}"
+    email: "konta@disroot.org"
     #caServer: https://acme-v02.api.letsencrypt.org/directory # Production server
     caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Staging server
     dnsChallenge:
