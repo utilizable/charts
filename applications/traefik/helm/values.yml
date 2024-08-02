@@ -40,16 +40,16 @@ env:
         name: ovh-secrets
         key: consumerKey
 
-ports:
-  web:
-    redirectTo: 
-      port: websecure
-  websecure:
-    tls:
-      enabled: true
-      certResolver: myresolver
+#ports:
+#  web:
+#    redirectTo: 
+#      port: websecure
+#  websecure:
+#    tls:
+#      enabled: true
+#      certResolver: myresolver
 
-ingressRoute:
-  dashboard:
-    enabled: true
-    domain: "dashboard.anykey.pl"
+#ingressRoute:
+#  dashboard:
+#    enabled: true
+#    domain: "dashboard.anykey.pl"
