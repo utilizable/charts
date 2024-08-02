@@ -17,7 +17,7 @@ additionalArguments:
   
   - "--entrypoints.websecure.address=:8443"
   - "--entrypoints.websecure.http.tls=true"
-  - "--entrypoints.websecure.http.tls.certResolver=myresolver"
+  - "--entrypoints.websecure.http.tls.certResolver=letsencrypt"
   - "--entrypoints.websecure.http.tls.domains[0].main=anykey.pl"
   - "--entrypoints.websecure.http.tls.domains[0].sans=*.anykey.pl"
 
