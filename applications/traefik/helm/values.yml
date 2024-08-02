@@ -8,12 +8,12 @@ additionalArguments:
   - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
   - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
   
-  - "--certificatesresolvers.letsencrypt.acme.dnschallenge=true"
-  - "--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=ovh"
-  - "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
-  - "--certificatesresolvers.letsencrypt.acme.email=konta@disroot.org"
-  - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
-  - "--certificatesresolvers.letsencrypt.acme.storage=acme.json"
+  #- "--certificatesresolvers.letsencrypt.acme.dnschallenge=true"
+  #- "--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=ovh"
+  #- "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
+  #- "--certificatesresolvers.letsencrypt.acme.email=konta@disroot.org"
+  #- "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+  #- "--certificatesresolvers.letsencrypt.acme.storage=acme.json"
   
   - "--entrypoints.websecure.address=:8443"
   - "--entrypoints.websecure.http.tls=true"
