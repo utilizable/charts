@@ -48,6 +48,15 @@ certResolvers:
     dnsChallenge:
       provider: ovh
     storage: /data/acme.json
+
+deployment:
+  initContainers:
+    - name: volume-permissions
+      image: busybox:latest
+      command: ["sh", "-c", "ls -la /; touch /data/acme.json; chmod -v 600 /data/acme.json"]
+      volumeMounts:
+      - mountPath: /data
+        name: data
     
 #ports:
 #  web:
