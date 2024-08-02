@@ -79,10 +79,6 @@ ports:
       port: websecure
       permanent: true
   websecure:
-    expose: true
-    exposedPort: 443
-    port: 8443
-    protocol: TCP
     tls:
       certResolver: letsencrypt
       domains:
