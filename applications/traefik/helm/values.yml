@@ -74,17 +74,10 @@ deployment:
 #          - "*.anykey.pl"
           
 ports:
-  traefik:
-    expose: false
-    exposedPort: 9000
-    port: 9000
-    protocol: TCP
   web:
-    expose: true
-    exposedPort: 80
-    port: 8000
-    protocol: TCP
-    redirectTo: websecure
+    redirectTo: 
+      port: websecure
+      permanent: true
   websecure:
     expose: true
     exposedPort: 443
