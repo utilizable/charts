@@ -15,11 +15,11 @@ additionalArguments:
   #- "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
   #- "--certificatesresolvers.letsencrypt.acme.storage=acme.json"
   
-  - "--entrypoints.websecure.address=:8443"
-  - "--entrypoints.websecure.http.tls=true"
-  - "--entrypoints.websecure.http.tls.certResolver=letsencrypt"
-  - "--entrypoints.websecure.http.tls.domains[0].main=anykey.pl"
-  - "--entrypoints.websecure.http.tls.domains[0].sans=*.anykey.pl"
+  #- "--entrypoints.websecure.address=:8443"
+  #- "--entrypoints.websecure.http.tls=true"
+  #- "--entrypoints.websecure.http.tls.certResolver=letsencrypt"
+  #- "--entrypoints.websecure.http.tls.domains[0].main=anykey.pl"
+  #- "--entrypoints.websecure.http.tls.domains[0].sans=*.anykey.pl"
 
 env:
   - name: OVH_ENDPOINT
@@ -63,11 +63,16 @@ ports:
   web:
     redirectTo: 
       port: websecure
+      permanent: true
   websecure:
     tls:
       enabled: true
       certResolver: letsencrypt
-
+      domains:
+        - main: anykey.pl
+          sans:
+          - *.anykey.pl
+          
 #ingressRoute:
 #  dashboard:
 #    enabled: true
