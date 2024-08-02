@@ -46,7 +46,7 @@ certResolvers:
     #caServer: https://acme-v02.api.letsencrypt.org/directory # Production server
     caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Staging server
     dnsChallenge:
-      provider: transip
+      provider: ovh
     storage: /data/acme.json
     #tlsChallenge: {}
   
