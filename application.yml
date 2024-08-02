@@ -16,17 +16,17 @@ spec:
       # DEMOCRATIC-CSI - NFS
       ####################
 
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/democratic-csi/nfs/argocd
+    #- repoURL: 'https://github.com/utilizable/charts'
+    #  targetRevision: HEAD
+    #  path: applications/democratic-csi/nfs/argocd
 
       ####################
       # DEMOCRATIC-CSI - ISCSI 
       ####################
       
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/democratic-csi/iscsi/argocd
+    #- repoURL: 'https://github.com/utilizable/charts'
+    #  targetRevision: HEAD
+    #  path: applications/democratic-csi/iscsi/argocd
 
       ####################
       # SEALED SECRETS
