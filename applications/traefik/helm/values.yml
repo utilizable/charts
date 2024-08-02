@@ -8,6 +8,8 @@ additionalArguments:
   - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
   - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
   
+  - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
+  - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=ovh"
   - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
   - "--certificatesresolvers.myresolver.acme.email=konta@disroot.org"
   - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
@@ -18,6 +20,25 @@ additionalArguments:
   - "--entrypoints.websecure.http.tls.certResolver=myresolver"
   - "--entrypoints.websecure.http.tls.domains[0].main=anykey.pl"
   - "--entrypoints.websecure.http.tls.domains[0].sans=*.anykey.pl"
+
+env:
+  - name: OVH_ENDPOINT
+    value: "ovh-eu"
+  - name: OVH_APPLICATION_KEY
+    valueFrom:
+      secretKeyRef:
+        name: ovh-secrets
+        key: applicationKey
+  - name: OVH_APPLICATION_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: ovh-secrets
+        key: applicationSecret
+  - name: OVH_CONSUMER_KEY
+    valueFrom:
+      secretKeyRef:
+        name: ovh-secrets
+        key: consumerKey
 
 ports:
   web:
