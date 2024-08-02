@@ -21,7 +21,7 @@ spec:
           - name: config.default
             value: mps10
           - name: runtimeClassName
-            value: nvidia
+            value: docker
           - name: config.map.mps10
             value: |
               version: v1
@@ -30,9 +30,9 @@ spec:
                   resources:
                     - name: nvidia.com/gpu
                       replicas: 3 
-    #- repoURL: 'https://github.com/utilizable/charts'
-    #  targetRevision: HEAD
-    #  path: applications/nvidia-device-plugin/manifests/
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: applications/nvidia-device-plugin/manifests/
   destination:
     server: https://kubernetes.default.svc
     namespace: nvidia-device-plugin
