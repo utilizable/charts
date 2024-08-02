@@ -71,7 +71,7 @@ ports:
       domains:
         - main: anykey.pl
           sans:
-          - *.anykey.pl
+          - "*.anykey.pl"
           
 #ingressRoute:
 #  dashboard:
