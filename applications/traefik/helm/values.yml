@@ -59,15 +59,15 @@ deployment:
       - mountPath: /data
         name: data
     
-#ports:
-#  web:
-#    redirectTo: 
-#      port: websecure
-#  websecure:
-#    tls:
-#      enabled: true
-#      certResolver: letsencrypt
-#
+ports:
+  web:
+    redirectTo: 
+      port: websecure
+  websecure:
+    tls:
+      enabled: true
+      certResolver: letsencrypt
+
 #ingressRoute:
 #  dashboard:
 #    enabled: true
