@@ -1,21 +1,21 @@
 applications:
 
     - name: sealed-secrets
-      chart: '{{ .name }}'
+      chart: {{ .name }}
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
       chartValues: true
       k8sManifests: true
       #chartPath: 
-      namespace: '{{ .name }}'
+      namespace: {{ .name }}
       
     - name: nvidia-device-plugin
-      chart: '{{ .name }}'
+      chart: {{ .name }}
       targetRevision: 0.16.0
       repoURL: https://nvidia.github.io/k8s-device-plugin
       chartValues: true
       k8sManifests: true     
-      namespace: '{{ .name }}'
+      namespace: {{ .name }}
 
 #    - name: democratic-csi-nfs
 #      targetRevision:
