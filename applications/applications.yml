@@ -1,19 +1,32 @@
 applications:
 
     - name: sealed-secrets
-      enable: true
+      targetRevision: 2.16.1
+      repoURL: https://bitnami-labs.github.io/sealed-secrets
+      helmValues: true
+      k8sManifests: true
       
-    - name: democratic-csi-nfs
-      enable: false
+#    - name: democratic-csi-nfs
+#      targetRevision:
+#      repoURL:
       
-    - name: democratic-csi-iscsi
-      enable: false
+#    - name: democratic-csi-iscsi
+#      targetRevision:
+#      repoURL:
       
     - name: nvidia-device-plugin
-      enable: true
+      targetRevision: 0.16.0
+      repoURL: https://nvidia.github.io/k8s-device-plugin
+      helmValues: true
+      k8sManifests: true
       
     - name: local-path-provisioner
-      enable: true
+      targetRevision: v0.0.28 
+      repoURL: https://github.com/rancher/local-path-provisioner
+      path: ./deploy/chart/local-path-provisioner
       
     - name: traefik
-      enable: true
+      targetRevision: 30.0.2
+      repoURL: https://traefik.github.io/charts
+      helmValues: true
+      k8sManifests: true
