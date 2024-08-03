@@ -5,7 +5,7 @@ applications:
       repoURL: https://bitnami-labs.github.io/sealed-secrets
       helmValues: true
       k8sManifests: true
-      path:
+      path: ""
       
 #    - name: democratic-csi-nfs
 #      targetRevision:
