@@ -7,6 +7,7 @@ applications:
       chartValues: true
       k8sManifests: true
       #chartPath: 
+      namespace: {{ .name }}
       
     - name: nvidia-device-plugin
       chart: nvidia-device-plugin
@@ -14,6 +15,7 @@ applications:
       repoURL: https://nvidia.github.io/k8s-device-plugin
       chartValues: true
       k8sManifests: true     
+      namespace: {{ .name }}
 
 #    - name: democratic-csi-nfs
 #      targetRevision:
