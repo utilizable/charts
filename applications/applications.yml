@@ -1,0 +1,25 @@
+applications:
+
+    - name: sealed-secrets
+      path: applications/sealed-secrets/argocd
+      enable: true
+      
+    - name: democratic-csi-nfs
+      path: applications/democratic-csi/nfs/argocd
+      enable: false
+      
+    - name: democratic-csi-iscsi
+      path: applications/democratic-csi/iscsi/argocd
+      enable: false
+      
+    - name: nvidia-device-plugin
+      path: applications/nvidia-device-plugin/argocd
+      enable: true
+      
+    - name: local-path-provisioner
+      path: applications/local-path-provisioner/argocd
+      enable: true
+      
+    - name: traefik
+      path: applications/traefik/argocd
+      enable: true
