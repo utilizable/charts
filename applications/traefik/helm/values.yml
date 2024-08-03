@@ -3,10 +3,10 @@ additionalArguments:
   - "--log.level=debug"
   - "--providers.kubernetescrd"
   
-  - "--entrypoints.web.address=:8000"
-  - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-  - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-  - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+  #- "--entrypoints.web.address=:8000"
+  #- "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+  #- "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+  #- "--entrypoints.web.http.redirections.entrypoint.permanent=true"
   
   #- "--certificatesresolvers.letsencrypt.acme.dnschallenge=true"
   #- "--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=ovh"
@@ -44,11 +44,11 @@ certResolvers:
   letsencrypt:
     email: "konta@disroot.org"
     #caServer: https://acme-v02.api.letsencrypt.org/directory # Production server
-    caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Staging server
+    #caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Staging server
     dnsChallenge:
       provider: ovh
     storage: /data/acme.json
-    #tlsChallenge: {}
+    tlsChallenge: {}
   
 deployment:
   initContainers:
@@ -58,21 +58,7 @@ deployment:
       volumeMounts:
       - mountPath: /data
         name: data
-    
-#ports:
-#  web:
-#    redirectTo: 
-#      port: websecure
-#      permanent: true
-#  websecure:
-#    tls:
-#      enabled: true
-#      certResolver: letsencrypt
-#      domains:
-#        - main: "anykey.pl"
-#          sans:
-#          - "*.anykey.pl"
-          
+  
 ports:
   web:
     redirectTo: 
@@ -87,8 +73,3 @@ ports:
         - '*.anykey.pl'
       enabled: true
       options: ""
-      
-#ingressRoute:
-#  dashboard:
-#    enabled: true
-#    domain: "dashboard.anykey.pl"
