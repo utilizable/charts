@@ -48,7 +48,7 @@ certResolvers:
     dnsChallenge:
       provider: ovh
     storage: /data/acme.json
-    tlsChallenge: {}
+    tlsChallenge: true
   
 deployment:
   initContainers:
