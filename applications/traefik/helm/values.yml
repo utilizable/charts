@@ -68,7 +68,7 @@ ports:
     tls:
       certResolver: letsencrypt
       domains:
-      - main: anykey.pl
+      - main: "*.anykey.pl"
         sans:
         - '*.anykey.pl'
       enabled: true
