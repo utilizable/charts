@@ -32,13 +32,24 @@ spec:
         syncOptions:
           - CreateNamespace=true
   templatePatch: |
-    spec:
-      source:
-        {{- range .applications }}
-          {{- if .enable }}
-           repoUrl: 'https://github.com/utilizable/charts'
-           targetRevision: 'HEAD'
-           path: ./applications/{{ .name }}/argocd
-          {{- end }}
-        {{- end }}
+    {{- range .applications }}
+      {{- if .enable }}
+       metadata:
+        name: {{ .name }} 
+      spec:
+        source:
+             repoUrl: 'https://github.com/utilizable/charts'
+             targetRevision: 'HEAD'
+             path: ./applications/{{ .name }}/argocd
+        destination:
+          server: 'https://kubernetes.default.svc'
+          namespace: 'argocd'
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
+          syncOptions:
+            - CreateNamespace=true
+      {{- end }}
+    {{- end }}
 ...
