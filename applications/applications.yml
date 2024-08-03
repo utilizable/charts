@@ -12,7 +12,7 @@ applications:
       chart: nvidia-device-plugin
       targetRevision: 0.16.0
       repoURL: https://nvidia.github.io/k8s-device-plugin
-      chartValues: trueValues: true
+      chartValues: true
       k8sManifests: true     
 
 #    - name: democratic-csi-nfs
