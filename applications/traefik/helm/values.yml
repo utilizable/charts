@@ -1,7 +1,7 @@
-providers:
-  kubernetesCRD:
-    enabled: true
-    allowCrossNamespace: true
+#providers:
+#  kubernetesCRD:
+#    enabled: true
+#    allowCrossNamespace: true
 
 additionalArguments:
   - "--api.dashboard=true"
