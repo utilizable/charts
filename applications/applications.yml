@@ -1,7 +1,10 @@
+{{- $sealedSecretsName := "sealed-secrets" -}}
+{{- $nvidiaDevicePluginName := "nvidia-device-plugin" -}}
+
 applications:
 
     - name: sealed-secrets
-      chart: {{ .name }}
+      chart: {{ $sealedSecretsName }}
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
       chartValues: true
