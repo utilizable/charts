@@ -6,7 +6,7 @@ applications:
       
     - name: democratic-csi-nfs
       path: applications/democratic-csi/nfs/argocd
-      enable: false
+      enable: true
       
     - name: democratic-csi-iscsi
       path: applications/democratic-csi/iscsi/argocd
