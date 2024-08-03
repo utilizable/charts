@@ -14,15 +14,22 @@ metadata:
 spec:
   project: default
   sources:
+  
+  - repoURL: 'https://github.com/utilizable/charts'
+    targetRevision: HEAD
+    path: applications/traefik/manifests/ 
+    
   - repoURL: 'https://traefik.github.io/charts'
     targetRevision: 30.0.2
     chart: traefik
     helm:
       valueFiles:
         - $values/applications/traefik/helm/values.yml
+        
   - repoURL: 'https://github.com/utilizable/charts'
     targetRevision: HEAD
     ref: values
+    
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
