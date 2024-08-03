@@ -4,76 +4,41 @@
 #
 ---
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: aoa
+  name: test 
   namespace: argocd
 spec:
-  project: default
-  sources:
-      
-      ####################
-      # DEMOCRATIC-CSI - NFS
-      ####################
-
-    #- repoURL: 'https://github.com/utilizable/charts'
-    #  targetRevision: HEAD
-    #  path: applications/democratic-csi/nfs/argocd
-
-      ####################
-      # DEMOCRATIC-CSI - ISCSI 
-      ####################
-      
-    #- repoURL: 'https://github.com/utilizable/charts'
-    #  targetRevision: HEAD
-    #  path: applications/democratic-csi/iscsi/argocd
-
-      ####################
-      # SEALED SECRETS
-      ####################
-      
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/sealed-secrets/argocd
-
-      ####################
-      # NVIDIA DEVICE PLUGIN
-      ####################
-      
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/nvidia-device-plugin/argocd
-
-      ####################
-      # NVIDIA GPU OPERATOR 
-      ####################
-      
-    #- repoURL: 'https://github.com/utilizable/charts'
-    #  targetRevision: HEAD
-    #  path: applications/nvidia-gpu-operator/argocd
-
-      ####################
-      # LOCAL PATH PROVISIONER 
-      ####################
-      
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/local-path-provisioner/argocd
-
-      ####################
-      # TRAEFIK 
-      ####################
-      
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/traefik/argocd
-
-  destination:
-    server: 'https://kubernetes.default.svc'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
+  generators:
+    - git:
+        repoURL: https://github.com/utilizable/charts
+        revision: HEAD
+        files:
+          - path: ./applications/applications.yml
+  template:
+    metadata:
+      name: application
+    spec:
+      project: default
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: 'argocd'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+  templatePatch: |
+    spec:
+      sources:
+        {{- range .applications }}
+          {{- if .enable }}
+          - repoUrl: 'https://github.com/utilizable/charts'
+            targetRevision: 'HEAD'
+            path: {{ .path }}
+          {{- end }}
+        {{- end }}
 ...
