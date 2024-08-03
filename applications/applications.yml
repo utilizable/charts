@@ -14,19 +14,19 @@ applications:
 #      targetRevision:
 #      repoURL:
       
-    - name: nvidia-device-plugin
-      targetRevision: 0.16.0
-      repoURL: https://nvidia.github.io/k8s-device-plugin
-      helmValues: true
-      k8sManifests: true
+#    - name: nvidia-device-plugin
+#      targetRevision: 0.16.0
+#      repoURL: https://nvidia.github.io/k8s-device-plugin
+#      helmValues: true
+#      k8sManifests: true
       
-    - name: local-path-provisioner
-      targetRevision: v0.0.28 
-      repoURL: https://github.com/rancher/local-path-provisioner
-      path: ./deploy/chart/local-path-provisioner
+#    - name: local-path-provisioner
+#      targetRevision: v0.0.28 
+#      repoURL: https://github.com/rancher/local-path-provisioner
+#      path: ./deploy/chart/local-path-provisioner
       
-    - name: traefik
-      targetRevision: 30.0.2
-      repoURL: https://traefik.github.io/charts
-      helmValues: true
-      k8sManifests: true
+#    - name: traefik
+#      targetRevision: 30.0.2
+#      repoURL: https://traefik.github.io/charts
+#      helmValues: true
+#      k8sManifests: true
