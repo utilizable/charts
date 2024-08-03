@@ -1,0 +1,10 @@
+gfd.enabled: "true"
+config.default: mps10
+runtimeClassName: nvidia
+config.map.mps10: |
+    version: v1
+    sharing:
+      mps:
+        resources:
+          - name: nvidia.com/gpu
+            replicas: 3
