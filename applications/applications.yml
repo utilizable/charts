@@ -5,10 +5,15 @@ applications:
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
       chartValues: true
-      #chartPath: "DD"
-      
       k8sManifests: true
+      #chartPath: 
       
+    - name: nvidia-device-plugin
+      targetRevision: 0.16.0
+      repoURL: https://nvidia.github.io/k8s-device-plugin
+      helmValues: true
+      k8sManifests: true     
+
 #    - name: democratic-csi-nfs
 #      targetRevision:
 #      repoURL:
