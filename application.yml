@@ -33,12 +33,12 @@ spec:
           - CreateNamespace=true
   templatePatch: |
     spec:
-      sources:
+      source:
         {{- range .applications }}
           {{- if .enable }}
-          - repoUrl: 'https://github.com/utilizable/charts'
-            targetRevision: 'HEAD'
-            path: ./applications/{{ .name }}/argocd
+           repoUrl: 'https://github.com/utilizable/charts'
+           targetRevision: 'HEAD'
+           path: ./applications/{{ .name }}/argocd
           {{- end }}
         {{- end }}
 ...
