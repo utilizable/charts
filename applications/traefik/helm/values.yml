@@ -1,3 +1,8 @@
+providers:
+  kubernetesCRD:
+    enabled: true
+    allowCrossNamespace: true
+
 additionalArguments:
   - "--api.dashboard=true"
   - "--log.level=debug"
@@ -20,6 +25,7 @@ additionalArguments:
   #- "--entrypoints.websecure.http.tls.certResolver=letsencrypt"
   #- "--entrypoints.websecure.http.tls.domains[0].main=anykey.pl"
   #- "--entrypoints.websecure.http.tls.domains[0].sans=*.anykey.pl"
+
 
 env:
 
