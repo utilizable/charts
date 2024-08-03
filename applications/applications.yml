@@ -9,9 +9,10 @@ applications:
       #chartPath: 
       
     - name: nvidia-device-plugin
+      chart: nvidia-device-plugin
       targetRevision: 0.16.0
       repoURL: https://nvidia.github.io/k8s-device-plugin
-      helmValues: true
+      chartValues: trueValues: true
       k8sManifests: true     
 
 #    - name: democratic-csi-nfs
