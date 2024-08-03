@@ -1,10 +1,11 @@
 applications:
 
-    - chart: sealed-secrets
+    - name: sealed-secrets
+      chart: sealed-secrets
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
-      helmValues: true
-      #helmPath: ""
+      chartValues: true
+      #chartPath:
       k8sManifests: true
       
 #    - name: democratic-csi-nfs
