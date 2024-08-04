@@ -24,6 +24,7 @@ storageClasses:
     node-publish-secret:
     controller-expand-secret:
 driver:
+  existingConfigSecret: democratic-driver-config-nfs
   config:
     driver: freenas-api-iscsi
 

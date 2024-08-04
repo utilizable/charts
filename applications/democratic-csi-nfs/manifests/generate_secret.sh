@@ -6,7 +6,7 @@
 # Kubeseal:
 # https://github.com/bitnami-labs/sealed-secrets?tab=readme-ov-file#linux
 
-cat <<EOF | kubeseal -o yaml -w sealed-secret.yml
+cat <<EOF | kubeseal -o yaml --scope cluster-wide
 apiVersion: v1
 kind: Secret
 metadata:

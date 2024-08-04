@@ -1,14 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: applicationset
+  name: applications 
   namespace: argocd
 spec:
   project: default 
   sources:
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: ./
+      path: ./generators/
+        #releaseName: infrastructure 
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:

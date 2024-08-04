@@ -40,28 +40,22 @@ applications:
       namespace: kube-system
       #priority:
       
-    - name: democratic-csi-nfs
-      chartName: democratic-csi 
-      #chartPath:
-      chartValues: true
-      targetRevision: 0.14.6 
-      repoURL: https://democratic-csi.github.io/charts/
-      manifests: true
-      #namespace: 
-      #priority:
-     
-    - name: democratic-csi-iscsi
-      chartName: democratic-csi
-      #chartPath:
-      chartValues: true
-      targetRevision: 0.14.6 
-      repoURL: https://democratic-csi.github.io/charts/
-      manifests: true
-      #namespace:
-      #priority:
-      
-#    - name: nvidia-device-plugin
-#      targetRevision: 0.16.0
-#      repoURL: https://nvidia.github.io/k8s-device-plugin
-#      helmValues: true
-#      k8sManifests: true
+#    - name: democratic-csi-nfs
+#      chartName: democratic-csi 
+#      #chartPath:
+#      chartValues: true
+#      targetRevision: 0.14.6 
+#      repoURL: https://democratic-csi.github.io/charts/
+#      manifests: true
+#      #namespace: 
+#      #priority:
+#     
+#    - name: democratic-csi-iscsi
+#      chartName: democratic-csi
+#      #chartPath:
+#      chartValues: true
+#      targetRevision: 0.14.6 
+#      repoURL: https://democratic-csi.github.io/charts/
+#      manifests: true
+#      #namespace:
+#      #priority:

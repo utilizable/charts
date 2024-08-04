@@ -26,35 +26,35 @@ storageClasses:
     node-publish-secret:
     controller-expand-secret:
 driver:
-  # https://github.com/democratic-csi/charts/blob/b08d58f079d3ac812a75454c4d992f10c830af04/stable/democratic-csi/values.yaml#L21
-  #existingConfigSecret: democratic-driver-config-nfs
+
+  existingConfigSecret: democratic-driver-config-nfs
   config:
     driver: freenas-api-nfs
     instance_id:
   
 # This config will be overwriten by secret
 # -------
-#    httpConnection:
-#      protocol: http
-#      host: "CHANGE-ME"
-#      port: 80
-#      apiKey: "CHANGE-ME"
-#      allowInsecure: true
-#    zfs:
-#      datasetParentName: "CHANGE-ME"
-#      detachedSnapshotsDatasetParentName: "CHANGE-ME"
-#      datasetEnableQuotas: true
-#      datasetEnableReservation: false
-#      datasetPermissionsMode: "0777"
-#      datasetPermissionsUser: 0
-#      datasetPermissionsGroup: 0
-#    nfs:
-#      shareHost: "CHANGE-ME"
-#      shareAlldirs: false
-#      shareAllowedHosts: []
-#      shareAllowedNetworks: []
-#      shareMaprootUser: "CHANGE-ME"
-#      shareMaprootGroup: "CHANGE-ME"
-#      shareMapallUser: ""
-#      shareMapallGroup: ""
+    httpConnection:
+      protocol: http
+      host: "CHANGE-ME"
+      port: 80
+      apiKey: "CHANGE-ME"
+      allowInsecure: true
+    zfs:
+      datasetParentName: "CHANGE-ME"
+      detachedSnapshotsDatasetParentName: "CHANGE-ME"
+      datasetEnableQuotas: true
+      datasetEnableReservation: false
+      datasetPermissionsMode: "0777"
+      datasetPermissionsUser: 0
+      datasetPermissionsGroup: 0
+    nfs:
+      shareHost: "CHANGE-ME"
+      shareAlldirs: false
+      shareAllowedHosts: []
+      shareAllowedNetworks: []
+      shareMaprootUser: "CHANGE-ME"
+      shareMaprootGroup: "CHANGE-ME"
+      shareMapallUser: ""
+      shareMapallGroup: ""
 ...
