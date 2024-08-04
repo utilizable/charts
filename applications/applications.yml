@@ -1,7 +1,7 @@
 applications:
 
     - name: sealed-secrets
-      #chart:
+      #chartName:
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
       chartValues: true
@@ -10,7 +10,8 @@ applications:
       #namespace: 
       
     - name: nvidia-device-plugin
-      #chart: 
+      #chartName:
+      #chartPath: 
       targetRevision: 0.16.0
       repoURL: https://nvidia.github.io/k8s-device-plugin
       chartValues: true
