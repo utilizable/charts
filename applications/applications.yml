@@ -7,7 +7,8 @@ applications:
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
       manifests: true
-      #namespace: 
+      namespace: kube-system
+      priority: -1
       
     - name: nvidia-device-plugin
       #chartName:
@@ -17,7 +18,8 @@ applications:
       repoURL: https://nvidia.github.io/k8s-device-plugin
       manifests: true     
       #namespace: 
-
+      #priority:
+      
     - name: local-path-provisioner
       #chartName:
       chartPath: ./deploy/chart/local-path-provisioner 
@@ -26,6 +28,7 @@ applications:
       repoURL: https://github.com/rancher/local-path-provisioner
       #manifests: 
       #namespace: 
+      #priority:
       
     - name: traefik
       #chartName:
@@ -35,6 +38,7 @@ applications:
       repoURL: https://traefik.github.io/charts
       manifests: true
       #namespace:
+      #priority:
       
 #    - name: democratic-csi-nfs
 #      targetRevision:
