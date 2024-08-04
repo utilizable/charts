@@ -40,23 +40,28 @@ applications:
       namespace: kube-system
       #priority:
       
-#    - name: democratic-csi-nfs
-#      targetRevision:
-#      repoURL:
-      
-#    - name: democratic-csi-iscsi
-#      targetRevision:
-#      repoURL:
+    - name: democratic-csi-nfs
+      chartName: democratic-csi 
+      #chartPath:
+      chartValues: true
+      targetRevision: 0.14.6 
+      repoURL: https://democratic-csi.github.io/charts/
+      manifests: true
+      #namespace: 
+      #priority:
+     
+    - name: democratic-csi-iscsi
+      chartName: democratic-csi
+      #chartPath:
+      chartValues: true
+      targetRevision: 0.14.6 
+      repoURL: https://democratic-csi.github.io/charts/
+      manifests: true
+      #namespace:
+      #priority:
       
 #    - name: nvidia-device-plugin
 #      targetRevision: 0.16.0
 #      repoURL: https://nvidia.github.io/k8s-device-plugin
 #      helmValues: true
 #      k8sManifests: true
-      
-#    - name: local-path-provisioner
-#      targetRevision: v0.0.28 
-#      repoURL: https://github.com/rancher/local-path-provisioner
-#      path: ./deploy/chart/local-path-provisioner
-      
-
