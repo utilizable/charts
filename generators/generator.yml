@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: generator 
+  name: infrastructure 
   namespace: argocd
 spec:
   goTemplate: true
@@ -17,7 +17,7 @@ spec:
              repoURL: https://github.com/utilizable/charts
              revision: HEAD 
              files:
-               - path: sets/infrastructure.yml
+               - path: sets/"{{ .metadata.name }}".yml
          - list:
              elementsYaml: "{{ .applications | toYaml }}"
   template:
