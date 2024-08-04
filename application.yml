@@ -2,29 +2,31 @@
 # DES: ArgoCD apps of apps
 # URL: 
 #
----
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: test 
+  name: cluster-addons
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions: [ "missingkey=error" ]
+  goTemplateOptions: ["missingkey=error"]
   generators:
-    - git:
-        repoURL: https://github.com/utilizable/charts
-        revision: HEAD
-        files:
-          - path: ./applications/applications.yml
+  - matrix:
+      generators:
+         - git:
+             repoURL: https://github.com/utilizable/charts
+             revision: HEAD 
+             files:
+               - path: applications/applications.yml
+         - list:
+             elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
-      name: application
+      name: '{{ .name }}'
     spec:
-      project: default
+      project: 'default'
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: 'argocd'
       syncPolicy:
         automated:
           prune: true
@@ -32,24 +34,49 @@ spec:
         syncOptions:
           - CreateNamespace=true
   templatePatch: |
-    {{- range .applications }}
-      {{- if .enable }}
-       metadata:
-        name: {{ .name }} 
-      spec:
-        source:
-             repoUrl: 'https://github.com/utilizable/charts'
-             targetRevision: 'HEAD'
-             path: ./applications/{{ .name }}/argocd
-        destination:
-          server: 'https://kubernetes.default.svc'
-          namespace: 'argocd'
-        syncPolicy:
-          automated:
-            prune: true
-            selfHeal: true
-          syncOptions:
-            - CreateNamespace=true
-      {{- end }}
-    {{- end }}
+    metadata:
+      annotations:
+        {{- if hasKey . "priority" }}
+        argocd.argoproj.io/sync-wave: "{{ .priority }}"
+        {{- end }}
+    spec:
+      destination:
+        {{- if hasKey . "namespace" }}
+        namespace: {{ .namespace }} 
+        {{- else }}
+        namespace: {{ .name }} 
+        {{- end }}
+      sources:
+        - repoUrl: {{ .repoURL }} 
+          targetRevision: {{ .targetRevision }} 
+
+          {{- if hasKey . "chartPath" }}
+          path: {{ .chartPath }}
+          {{- end -}}
+
+          {{- if hasKey . "chartName" }}
+          chart: {{ .chartName }} 
+          {{- end -}}
+          
+          {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
+          chart: {{ .name }}
+          {{- end }}
+
+          {{- if hasKey . "chartValues" }}
+          helm:
+            valueFiles:
+              - $values/applications/{{ .name }}/helm/values.yml
+          {{- end -}}
+
+        {{- if hasKey . "chartValues" }}
+        - repoURL: 'https://github.com/utilizable/charts'
+          targetRevision: HEAD
+          ref: values
+        {{- end -}}
+
+        {{- if hasKey . "manifests" }}
+        - repoURL: 'https://github.com/utilizable/charts'
+          targetRevision: HEAD
+          path: applications/{{ .name }}/manifests/
+        {{- end -}}
 ...
