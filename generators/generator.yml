@@ -5,8 +5,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: infrastructure
-  namespace: argocd
+  name: 'infrastructure'
+  namespace: 'argocd'
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
