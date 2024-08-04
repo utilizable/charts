@@ -39,6 +39,7 @@ spec:
         {{- if hasKey . "priority" }}
         argocd.argoproj.io/sync-wave: "{{ .priority }}"
         {{- end }}
+        test: "{{- generator.input.parameters.key1 }}"
     spec:
       destination:
         {{- if hasKey . "namespace" }}
