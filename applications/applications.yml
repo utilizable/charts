@@ -31,7 +31,7 @@ applications:
       #chartPath:    
       targetRevision: 30.0.2
       repoURL: https://traefik.github.io/charts
-      helmValues: true
+      chartValues: true
       manifests: true
       #namespace:
       
