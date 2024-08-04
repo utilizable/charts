@@ -20,18 +20,19 @@ applications:
 
     - name: local-path-provisioner
       #chartName:
-      #chartPath: 
+      chartPath: ./deploy/chart/local-path-provisioner 
+      #chartValues: 
       targetRevision: v0.0.28 
       repoURL: https://github.com/rancher/local-path-provisioner
-      chartPath: ./deploy/chart/local-path-provisioner
+      #manifests: 
       #namespace: 
       
     - name: traefik
       #chartName:
-      #chartPath:    
+      #chartPath:
+      chartValues: true
       targetRevision: 30.0.2
       repoURL: https://traefik.github.io/charts
-      chartValues: true
       manifests: true
       #namespace:
       
