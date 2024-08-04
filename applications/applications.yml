@@ -37,7 +37,7 @@ applications:
       targetRevision: 30.0.2
       repoURL: https://traefik.github.io/charts
       manifests: true
-      #namespace:
+      namespace: kube-system
       #priority:
       
 #    - name: democratic-csi-nfs
