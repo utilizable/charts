@@ -2,22 +2,30 @@ applications:
 
     - name: sealed-secrets
       #chartName:
+      #chartPath:
+      chartValues: true
       targetRevision: 2.16.1
       repoURL: https://bitnami-labs.github.io/sealed-secrets
-      chartValues: true
-      k8sManifests: true
-      #chartPath: 
+      manifests: true
       #namespace: 
       
     - name: nvidia-device-plugin
       #chartName:
       #chartPath: 
+      chartValues: true
       targetRevision: 0.16.0
       repoURL: https://nvidia.github.io/k8s-device-plugin
-      chartValues: true
-      k8sManifests: true     
+      manifests: true     
       #namespace: 
 
+    - name: local-path-provisioner
+      #chartName:
+      #chartPath: 
+      targetRevision: v0.0.28 
+      repoURL: https://github.com/rancher/local-path-provisioner
+      chartPath: ./deploy/chart/local-path-provisioner
+      #namespace: 
+      
 #    - name: democratic-csi-nfs
 #      targetRevision:
 #      repoURL:
