@@ -26,6 +26,15 @@ applications:
       chartPath: ./deploy/chart/local-path-provisioner
       #namespace: 
       
+    - name: traefik
+      #chartName:
+      #chartPath:    
+      targetRevision: 30.0.2
+      repoURL: https://traefik.github.io/charts
+      helmValues: true
+      manifests: true
+      #namespace:
+      
 #    - name: democratic-csi-nfs
 #      targetRevision:
 #      repoURL:
@@ -45,8 +54,4 @@ applications:
 #      repoURL: https://github.com/rancher/local-path-provisioner
 #      path: ./deploy/chart/local-path-provisioner
       
-#    - name: traefik
-#      targetRevision: 30.0.2
-#      repoURL: https://traefik.github.io/charts
-#      helmValues: true
-#      k8sManifests: true
+
