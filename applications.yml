@@ -9,7 +9,8 @@ spec:
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
       path: ./generators/
-      releaseName: infrastructure 
+      kustomize:
+        namePrefix: prod-
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
