@@ -33,7 +33,7 @@ spec:
           - CreateNamespace=true
   templatepatch: |
       sources:
-        - repourl: {{ `{{ .repoUrl }}` }}
-          targetrevision: {{ `{{ .targetRevision }}` }}
-          path: /
+        - repourl: '{{ `{{ .repoUrl }}` }}'
+          targetrevision: '{{ `{{ .targetRevision }}` }}'
+          path: test 
 ...
