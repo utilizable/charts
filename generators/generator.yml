@@ -16,8 +16,8 @@ spec:
           - list:
               elements:
                 - file: ./sets/infrastructure.yml
-          - matrix:
-              generators:
+#          - matrix:
+#              generators:
                 - git:
                     repoURL: https://github.com/utilizable/charts
                     revision: HEAD
