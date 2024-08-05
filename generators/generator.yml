@@ -23,8 +23,8 @@ spec:
                     revision: HEAD
                     files:
                       - path: "{{ .file }}"
-                - list:
-                    elementsYaml: "{{ .applications | toYaml }}"
+#                - list:
+#                    elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
       name: '{{ .name }}'
