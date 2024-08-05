@@ -40,12 +40,13 @@ spec:
         {{- if hasKey . "priority" }}
         argocd.argoproj.io/sync-wave: "{{ .priority }}"
         {{- end }}
+        test: "{{ . }}"
     spec:
       destination:
         {{- if hasKey . "namespace" }}
         namespace: {{ .namespace }} 
         {{- else }}
-        namespace: '{{ name }}'
+        namespace: {{ .name }} 
         {{- end }}
       sources:
         - repoUrl: {{ .repoURL }} 
