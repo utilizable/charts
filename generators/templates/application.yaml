@@ -14,12 +14,12 @@ spec:
              repoURL: 'https://github.com/utilizable/charts'
              revision: HEAD 
              files:
-               - path: 'sets/infrastructure.yml'
+               - path: '{{ `{{ .Values.file }}` }}'
          - list:
              elementsYaml: '{{ `{{ .applications | toYaml }}` }}'
   template:
     metadata:
-      name: test
+      name: test-app
     spec:
       project: default 
       sources:
