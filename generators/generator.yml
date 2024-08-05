@@ -20,16 +20,16 @@ spec:
                 - key1: value1
           - matrix:
               generators:
-                - list:
-                    elements:
-                      - key2: value2
-                - list:
-                    elements:
-                      - substitute1: '{{ .key1 }}'
-                        substitute2: '{{ .key1 }}'
+                 - git:
+                     repoURL: https://github.com/utilizable/charts
+                     revision: HEAD 
+                     files:
+                       - path: "{{ .key1 }}"
+                 - list:
+                     elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
-      name: '{{ .substitute1 }}'
+      name: 'dd'
     spec:
       project: 'default'
       destination:
@@ -37,7 +37,7 @@ spec:
       source:
         repoURL: 'https://github.com/utilizable/charts'
         targetRevision: HEAD
-        path: applications/{{ .substitute1 }}/manifests/
+        path: applications/dd/manifests/
       syncPolicy:
         automated:
           prune: true
