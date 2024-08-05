@@ -1,11 +1,21 @@
-applications:
-    - name: sealed-secrets
-      #chartName:
-      #chartPath:
-      chartValues: true
-      targetRevision: 2.16.1
-      repoURL: https://bitnami-labs.github.io/sealed-secrets
-      manifests: true
-      namespace: kube-system
-      priority: -1
+global:
+  env: development
+  helmDefault: false
+  valuesFile: values.yaml
+  spec:
+    project: development
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: default
+    source:
+      repoURL: https://github.com/ranrubin/argocd-app-of-apps
+      targetRevision: HEAD
 
+argocdApplications:
+  helmGuestbook:
+    disableAutomated: false
+    disable: false
+    name: helm-guestbook
+    namespace: helm-guestbook
+#    targetRevision: HEAD
+    helm: true
