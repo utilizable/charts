@@ -9,9 +9,9 @@ spec:
   generators:
   - list:
       elements:
-      - name: infrastrucutre 
+      - name: infrastrucutre-a
         path: sets/infrastructure.yml
-      - name: applications
+      - name: applications-a
         path: sets/applications.yml
   template:
     metadata:
