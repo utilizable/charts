@@ -14,7 +14,7 @@ spec:
              repoURL: '{{ .Values.File }}'
              revision: HEAD 
              files:
-               - path: '{{ `{{ .Values.File }}` }}'
+               - path: '../sets/infrastructure.yml'
          - list:
              elementsYaml: '{{ `{{ .applications | toYaml }}` }}'
   template:
