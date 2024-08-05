@@ -13,10 +13,10 @@ spec:
   generators:
   - matrix:
     generators:
-     - matrix:
-       - list:
-         elements:
-         - file: infrastructure.yml
+     - list:
+       elements:
+       - file: infrastructure.yml
+     - matrix:    
         generators:
            - git:
                repoURL: https://github.com/utilizable/charts
