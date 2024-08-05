@@ -11,43 +11,72 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - matrix:
-        generators:
-          - matrix:
-              generators:
-               - git:
-                   repoURL: https://github.com/utilizable/charts
-                   revision: HEAD 
-                   files:
-                     - path: "sets/infrastructure.yml"        
-               - list:
-                  elements: []
-                  elementsYaml: "{{ .applications | toYaml }}"
-          - matrix:
-              generators:
-                - list:
-                    elements:
-                      - key1: ./sets/infrastructure.yml                 
-                 - git:
-                     repoURL: https://github.com/utilizable/charts
-                     revision: HEAD 
-                     files:
-                       - path: "{{ .key1 }}"
+  - matrix:
+      generators:
+         - git:
+             repoURL: https://github.com/utilizable/charts
+             revision: HEAD 
+             files:
+               - path: "sets/infrastructure.yml"
+         - list:
+             elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
-      name: 'dd'
+      name: '{{ .name }}'
     spec:
       project: 'default'
       destination:
         server: 'https://kubernetes.default.svc'
-      source:
-        repoURL: 'https://github.com/utilizable/charts'
-        targetRevision: HEAD
-        path: applications/dd/manifests/
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
+  templatePatch: |
+    metadata:
+      annotations:
+        {{- if hasKey . "priority" }}
+        argocd.argoproj.io/sync-wave: "{{ .priority }}"
+        {{- end }}
+    spec:
+      destination:
+        {{- if hasKey . "namespace" }}
+        namespace: {{ .namespace }} 
+        {{- else }}
+        namespace: {{ .name }} 
+        {{- end }}
+      sources:
+        - repoUrl: {{ .repoURL }} 
+          targetRevision: {{ .targetRevision }} 
+
+          {{- if hasKey . "chartPath" }}
+          path: {{ .chartPath }}
+          {{- end -}}
+
+          {{- if hasKey . "chartName" }}
+          chart: {{ .chartName }} 
+          {{- end -}}
+          
+          {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
+          chart: {{ .name }}
+          {{- end }}
+
+          {{- if hasKey . "chartValues" }}
+          helm:
+            valueFiles:
+              - $values/applications/{{ .name }}/helm/values.yml
+          {{- end -}}
+
+        {{- if hasKey . "chartValues" }}
+        - repoURL: 'https://github.com/utilizable/charts'
+          targetRevision: HEAD
+          ref: values
+        {{- end -}}
+
+        {{- if hasKey . "manifests" }}
+        - repoURL: 'https://github.com/utilizable/charts'
+          targetRevision: HEAD
+          path: applications/{{ .name }}/manifests/
+        {{- end -}}
 ...
