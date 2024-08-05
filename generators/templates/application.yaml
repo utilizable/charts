@@ -1,34 +1,39 @@
-{{- range .Values.applications -}}
-{{ if not .disable }}
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: {{ .name }}
-  namespace: argocd
-spec:
-  project: 'default' 
-  source:
-    repoURL:  {{ .repoURL }}
-    targetRevision: {{ .targetRevision }}
-
-    {{- if hasKey . "chartPath" }}
-    path: {{ .chartPath }}
-    {{- end -}}
-
-    {{- if hasKey . "chartName" }}
-    chart: {{ .chartName }} 
-    {{- end -}}
-    
-    {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
-    chart: {{ .name }}
-    {{- end }}    
-
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
-      syncOptions:
-        - CreateNamespace=true
 ---
-{{- end }}
-{{- end }}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: 'generator'
+  namespace: 'argocd'
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - matrix:
+      generators:
+         - git:
+             repoURL: '{{ .Values.File }}'
+             revision: HEAD 
+             files:
+               - path: '{{ `{{ .Values.File }}` }}'
+         - list:
+             elementsYaml: "{{ `{{ .applications | toYaml }}` }}"
+  template:
+    metadata:
+      name: test
+    spec:
+      project: default 
+      sources:
+        - repoURL: https://github.com/argoproj/argocd-example-apps.git
+          targetRevision: HEAD
+          path: guestbook
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: 'default'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+
+...
