@@ -34,7 +34,7 @@ spec:
   templatepatch: |
     spec:
       sources:
-        - repoUrl: dd 
-          targetRevision: dd 
-          path: test 
+        - repoUrl: "test" 
+          targetRevision: "test"
+          path: "test"
 ...
