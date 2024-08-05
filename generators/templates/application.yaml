@@ -32,49 +32,8 @@ spec:
         syncOptions:
           - CreateNamespace=true
   templatepatch: |
-    metadata:
-      annotations:
-        '{{ `{{- if haskey . "priority" }}` }}'
-        argocd.argoproj.io/sync-wave: "'{{ `{{ .priority }}` }}'"
-        '{{ `{{- end }}` }}'
-    spec:
-      destination:
-        {{- if haskey . "namespace" }}
-        namespace: {{ .namespace }} 
-        {{- else }}
-        namespace: {{ .name }} 
-        {{- end }}
       sources:
-        - repourl: {{ .repourl }} 
-          targetrevision: {{ .targetrevision }} 
-
-          {{- if haskey . "chartpath" }}
-          path: {{ .chartpath }}
-          {{- end -}}
-
-          {{- if haskey . "chartname" }}
-          chart: {{ .chartname }} 
-          {{- end -}}
-          
-          {{- if not (or (haskey . "chartpath") (haskey . "chartname")) }}
-          chart: {{ .name }}
-          {{- end }}
-
-          {{- if haskey . "chartvalues" }}
-          helm:
-            valuefiles:
-              - $values/applications/{{ .name }}/helm/values.yml
-          {{- end -}}
-
-        {{- if haskey . "chartvalues" }}
-        - repourl: 'https://github.com/utilizable/charts'
-          targetrevision: head
-          ref: values
-        {{- end -}}
-
-        {{- if haskey . "manifests" }}
-        - repourl: 'https://github.com/utilizable/charts'
-          targetrevision: head
-          path: applications/{{ .name }}/manifests/
-        {{- end -}}
+        - repourl: {{ `{{ .repourl }}` }}
+          targetrevision: {{ `{{ .targetrevision }}` }}
+          path: /
 ...
