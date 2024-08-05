@@ -7,24 +7,21 @@ kind: ApplicationSet
 metadata:
   name: 'generator'
   namespace: 'argocd'
+  test:
+    file: infrastructure.yml
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - matrix:
-    generators:
-      - list:
-        elements:
-          - file: "sets/infrastructure.yml"
-      - matrix:
-          generators:
-             - git:
-                 repoURL: https://github.com/utilizable/charts
-                 revision: HEAD 
-                 files:
-                   - path: "sets/infrastructure.yml"
-             - list:
-                 elementsYaml: "{{ .applications | toYaml }}"
+    - matrix:
+        generators:
+           - git:
+               repoURL: https://github.com/utilizable/charts
+               revision: HEAD 
+               files:
+                 - path: '{{- `{{ index .metadata.labels "test/file" }}` -}}'
+           - list:
+               elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
       name: '{{ .name }}'
