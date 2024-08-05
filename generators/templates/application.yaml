@@ -31,50 +31,50 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-  templatePatch: |
+  templatepatch: |
     metadata:
       annotations:
-        {{- if hasKey . "priority" }}
-        argocd.argoproj.io/sync-wave: "{{ .priority }}"
-        {{- end }}
+        {{ '{{- if haskey . "priority" }}' }}
+        argocd.argoproj.io/sync-wave: "{{ '{{ .priority }}' }}"
+        {{ '{{- end }}' }}
     spec:
       destination:
-        {{- if hasKey . "namespace" }}
+        {{- if haskey . "namespace" }}
         namespace: {{ .namespace }} 
         {{- else }}
         namespace: {{ .name }} 
         {{- end }}
       sources:
-        - repoUrl: {{ .repoURL }} 
-          targetRevision: {{ .targetRevision }} 
+        - repourl: {{ .repourl }} 
+          targetrevision: {{ .targetrevision }} 
 
-          {{- if hasKey . "chartPath" }}
-          path: {{ .chartPath }}
+          {{- if haskey . "chartpath" }}
+          path: {{ .chartpath }}
           {{- end -}}
 
-          {{- if hasKey . "chartName" }}
-          chart: {{ .chartName }} 
+          {{- if haskey . "chartname" }}
+          chart: {{ .chartname }} 
           {{- end -}}
           
-          {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
+          {{- if not (or (haskey . "chartpath") (haskey . "chartname")) }}
           chart: {{ .name }}
           {{- end }}
 
-          {{- if hasKey . "chartValues" }}
+          {{- if haskey . "chartvalues" }}
           helm:
-            valueFiles:
+            valuefiles:
               - $values/applications/{{ .name }}/helm/values.yml
           {{- end -}}
 
-        {{- if hasKey . "chartValues" }}
-        - repoURL: 'https://github.com/utilizable/charts'
-          targetRevision: HEAD
+        {{- if haskey . "chartvalues" }}
+        - repourl: 'https://github.com/utilizable/charts'
+          targetrevision: head
           ref: values
         {{- end -}}
 
-        {{- if hasKey . "manifests" }}
-        - repoURL: 'https://github.com/utilizable/charts'
-          targetRevision: HEAD
+        {{- if haskey . "manifests" }}
+        - repourl: 'https://github.com/utilizable/charts'
+          targetrevision: head
           path: applications/{{ .name }}/manifests/
         {{- end -}}
 ...
