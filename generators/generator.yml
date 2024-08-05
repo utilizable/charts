@@ -26,7 +26,7 @@ spec:
                 - list:
                     elements:
                       - substitute1: '{{ .key1 }}'
-                        substitute2: '{{ .key2 }}'
+                        substitute2: '{{ .key1 }}'
   template:
     metadata:
       name: '{{ .substitute1 }}'
