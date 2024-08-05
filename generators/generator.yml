@@ -17,8 +17,8 @@ spec:
              repoURL: https://github.com/utilizable/charts
              revision: HEAD 
              files:
-               #- path: "{{external.variables.file}}"
-               - path: "./sets/infrastructure.yml"
+               - path: '{{ env "FILE" }}'
+               #- path: "./sets/infrastructure.yml"
          - list:
              elementsYaml: "{{ .applications | toYaml }}"
   template:
