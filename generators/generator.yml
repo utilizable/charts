@@ -24,7 +24,8 @@ spec:
                      files:
                        - path: "{{ .key1 }}"
                  - list:
-                     elementsYaml: "{{ .applications | toYaml }}"
+                    elements: []
+                    elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
       name: 'dd'
