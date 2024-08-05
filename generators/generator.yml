@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: 'generator'
+  name: 'infrastructure'
   namespace: 'argocd'
 spec:
   goTemplate: true
