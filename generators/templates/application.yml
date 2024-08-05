@@ -1,24 +1,55 @@
----
 {{- range .Values.applications -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .name }} 
+  name: {{ .name }}
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
-    path: guestbook
+    repoURL: {{ .repoURL }}
+    targetRevision: {{ .targetRevision }}
+    path: {{ .path | default "guestbook" }}
+    helm:
+      chart: {{ .chartName | default "default-chart" }}
+      releaseName: {{ .name }}
+      values: {{ .chartValues | default true }}
+      # Add additional Helm values if needed
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook
+    namespace: {{ .namespace | default "default" }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  # Adding priority (if supported by your ArgoCD version or custom implementation)
+  # priority: {{ .priority | default 0 }}
 {{- end }}
-...
+
+
+#---
+#{{- range .Values.applications -}}
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: {{ .name }} 
+#  namespace: argocd
+#spec:
+#  project: default
+#  source:
+#    repoURL: https://github.com/argoproj/argocd-example-apps.git
+#    targetRevision: HEAD
+#    path: guestbook
+#  destination:
+#    server: https://kubernetes.default.svc
+#    namespace: guestbook
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
+#    syncOptions:
+#      - CreateNamespace=true
+#{{- end }}
+#...
