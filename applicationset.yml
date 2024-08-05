@@ -15,7 +15,7 @@ spec:
           - path: "products/products-list.yml"
   template:
     metadata:
-      name: 'application'
+      name: 'products'
     spec:
       project: "default"
       destination:
