@@ -1,3 +1,4 @@
+file: 'dd'
 applications:
   - name: test 
     disableAutomated: false
