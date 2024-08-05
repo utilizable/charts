@@ -22,7 +22,7 @@ spec:
                      repoURL: https://github.com/utilizable/charts
                      revision: HEAD 
                      files:
-                       - path: "{{ .key1 }}"
+                       - path: "sets/infrastructure.yml"
                  - list:
                     elements: []
                     elementsYaml: "{{ .applications | toYaml }}"
