@@ -16,6 +16,7 @@ spec:
           - list:
               elements:
                 - file: ./sets/infrastructure.yml
+                - "{{ .applications | toYaml }}"
 #          - matrix:
 #              generators:
           - git:
