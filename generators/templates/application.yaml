@@ -11,10 +11,10 @@ spec:
   - matrix:
       generators:
          - git:
-             repoURL: '{{ .Values.File }}'
+             repoURL: 'https://github.com/utilizable/charts'
              revision: HEAD 
              files:
-               - path: '../sets/infrastructure.yml'
+               - path: 'sets/infrastructure.yml'
          - list:
              elementsYaml: '{{ `{{ .applications | toYaml }}` }}'
   template:
