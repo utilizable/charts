@@ -6,9 +6,23 @@ metadata:
 spec:
   project: default 
   sources:
+  
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: ./generators/
+      path: generators/
+      helm:
+        values: |
+            file: "sets/infrastructure.yml" 
+            name: "infrastructure" 
+
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: generators/
+      helm:
+        values: |
+            file: "sets/applications.yml" 
+            name: "applications" 
+            
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
