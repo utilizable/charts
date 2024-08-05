@@ -1,4 +1,4 @@
-{{- range $app := .Values.argocdApplications -}}
+{{- range .Values.argocdApplications -}}
 {{ if not .disable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application

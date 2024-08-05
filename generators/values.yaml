@@ -11,11 +11,10 @@ global:
       repoURL: https://github.com/ranrubin/argocd-app-of-apps
       targetRevision: HEAD
 
-argocdApplications:
-  helmGuestbook:
+applications:
+  - name: test 
     disableAutomated: false
     disable: false
-    name: helm-guestbook
     namespace: helm-guestbook
 #    targetRevision: HEAD
     helm: true
