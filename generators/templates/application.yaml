@@ -34,7 +34,7 @@ spec:
   templatepatch: |
     spec:
       sources:
-        - repoUrl: '{{ `{{ .repoUrl }}` }}'
-          targetRevision: '{{ `{{ .targetRevision }}` }}'
+        - repoUrl: {{ `{{ .repoUrl }}` }}
+          targetRevision: {{ `{{ .targetRevision }}` }}
           path: test 
 ...
