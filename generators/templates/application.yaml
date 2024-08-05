@@ -19,7 +19,7 @@ spec:
              elementsYaml: '{{ `{{ .applications | toYaml }}` }}'
   template:
     metadata:
-      name: test-appdd
+      name: test-app
     spec:
       project: default 
       destination:
@@ -31,10 +31,9 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-  templatepatch: |
+  templatePatch: |
     spec:
       sources:
-        - repoUrl: "testdd" 
-          targetRevision: "testdd"
-          path: "testdd"
+        - repoUrl: {{ .repoURL }} 
+          targetRevision: {{ .targetRevision }} 
 ...
