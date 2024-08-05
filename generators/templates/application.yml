@@ -4,51 +4,16 @@ kind: Application
 metadata:
   name: {{ .name }}
   annotations:
-    {{- if hasKey . "priority" }}
-    argocd.argoproj.io/sync-wave: "{{ .priority }}"
-    {{- end }}
   namespace: argocd
 spec:
   project: 'default' 
   sources:
-    - repoUrl: {{ .repoURL }} 
-      targetRevision: {{ .targetRevision }} 
-
-      {{- if hasKey . "chartPath" }}
-      path: {{ .chartPath }}
-      {{- end -}}
-
-      {{- if hasKey . "chartName" }}
-      chart: {{ .chartName }} 
-      {{- end -}}
-      
-      {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
-      chart: {{ .name }}
-      {{- end }}
-
-      {{- if hasKey . "chartValues" }}
-      helm:
-        valueFiles:
-          - $values/applications/{{ .name }}/helm/values.yml
-      {{- end -}}
-
-    {{- if hasKey . "chartValues" }}
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      ref: values
-    {{- end -}}
-
-    {{- if hasKey . "manifests" }}
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: applications/{{ .name }}/manifests/
+    - repoUrl: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD 
+      path: /test
   destination:
     server: 'https://kubernetes.default.svc'
-    {{- if hasKey . "namespace" }}
-    namespace: {{ .namespace }} 
-    {{- else }}
-    namespace: {{ .name }} 
-    {{- end }}
+    namespace: 'default' 
   syncPolicy:
     automated:
       prune: true
