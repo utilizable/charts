@@ -15,7 +15,7 @@ spec:
         generators:
           - list:
               elements:
-                - key1: infrastructure.yml
+                - key1: ./sets/infrastructure.yml
           - matrix:
               generators:
                  - git:
