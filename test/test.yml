@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: testid
+  name: test
   namespace: argocd
 spec:
   goTemplate: true
@@ -9,13 +9,13 @@ spec:
   generators:
   - list:
       elements:
-      - name: infrastrucutre-a
-        path: sets/infrastructure.yml
-      - name: applications-a
-        path: sets/applications.yml
+      - name: infrastructure
+        path: "sets/infrastructure.yml"
+      - name: application
+        path: "sets/applications.yml"
   template:
     metadata:
-      name: '{{ .name }}' 
+      name: '{{ .name }}'
     spec:
       project: "default"
       destination:
@@ -24,7 +24,7 @@ spec:
       syncPolicy:
         automated:
           prune: true
-          #selfHeal: true
+          selfHeal: true
         syncOptions:
           - CreateNamespace=true
   templatePatch: |
@@ -34,5 +34,6 @@ spec:
           targetRevision: HEAD
           path: generators/
           helm:
-            valueFiles:
-              - ../{{ .path }}
+            values: |
+                file: {{ .path }}
+                name: {{ .name }}
