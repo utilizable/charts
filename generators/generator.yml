@@ -11,21 +11,15 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - matrix:
-        generators:
-          - list:
-              elements:
-                - file: ./sets/infrastructure.yml
-                - "{{ .applications | toYaml }}"
-#          - matrix:
-#              generators:
-          - git:
-              repoURL: https://github.com/utilizable/charts
-              revision: HEAD
-              files:
-                - path: "{{ .file }}"
-#                - list:
-#                    elementsYaml: "{{ .applications | toYaml }}"
+  - matrix:
+      generators:
+         - git:
+             repoURL: https://github.com/utilizable/charts
+             revision: HEAD 
+             files:
+               - path: "{{ .metadata.labels.file }}"
+         - list:
+             elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
       name: '{{ .name }}'
