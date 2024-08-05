@@ -1,33 +1,42 @@
+---
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: application
+  name: test
   namespace: argocd
 spec:
-  project: default 
-  sources:
-  
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: generator/
-      helm:
-        values: |
-            file: "sets/infrastructure.yml" 
-            name: "infrastructure" 
-
-    - repoURL: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD
-      path: generator/
-      helm:
-        values: |
-            file: "sets/applications.yml" 
-            name: "applications" 
-            
-  destination:
-    server: 'https://kubernetes.default.svc'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: "https://github.com/utilizable/charts.git"
+        revision: HEAD
+        files:
+          - path: "products/list.yml"
+  template:
+    metadata:
+      name: 'application'
+    spec:
+      project: "default"
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: 'default' 
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+  templatePatch: |
+    spec:
+      sources:
+        {{ range .list }}
+        - repoUrl: 'https://github.com/utilizable/charts.git'
+          targetRevision: HEAD
+          path: generator/ 
+          helm:
+            values: |
+              file: "products/{{ . }}/applications.yml"
+              name: "{{ . }}" 
+        {{ end }}
+...
