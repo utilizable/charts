@@ -1,0 +1,59 @@
+{{- range $.Values.applications -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  annotations:
+    {{- if hasKey . "priority" }}
+    argocd.argoproj.io/sync-wave: "{{ .priority }}"
+    {{- end }}
+  namespace: argocd
+spec:
+  project: 'default' 
+  sources:
+    - repoUrl: {{ .repoURL }} 
+      targetRevision: {{ .targetRevision }} 
+
+      {{- if hasKey . "chartPath" }}
+      path: {{ .chartPath }}
+      {{- end -}}
+
+      {{- if hasKey . "chartName" }}
+      chart: {{ .chartName }} 
+      {{- end -}}
+      
+      {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
+      chart: {{ .name }}
+      {{- end }}
+
+      {{- if hasKey . "chartValues" }}
+      helm:
+        valueFiles:
+          - $values/applications/{{ .name }}/helm/values.yml
+      {{- end -}}
+
+    {{- if hasKey . "chartValues" }}
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      ref: values
+    {{- end -}}
+
+    {{- if hasKey . "manifests" }}
+    - repoURL: 'https://github.com/utilizable/charts'
+      targetRevision: HEAD
+      path: applications/{{ .name }}/manifests/
+  destination:
+    server: 'https://kubernetes.default.svc'
+    {{- if hasKey . "namespace" }}
+    namespace: {{ .namespace }} 
+    {{- else }}
+    namespace: {{ .name }} 
+    {{- end }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+{{- end }}
