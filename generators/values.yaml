@@ -1,8 +1,2 @@
 file: 'dd'
-applications:
-  - name: test 
-    disableAutomated: false
-    disable: false
-    namespace: helm-guestbook
-#    targetRevision: HEAD
-    helm: true
+name: 'dd'

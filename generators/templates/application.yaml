@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: 'generator'
+  name: {{ $.Values.name }} 
   namespace: 'argocd'
 spec:
   goTemplate: true
