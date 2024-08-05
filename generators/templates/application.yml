@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test 
+  name: guestbook
   namespace: argocd
 spec:
-  project: 'default' 
-  sources:
-    - repoUrl: 'https://github.com/utilizable/charts'
-      targetRevision: HEAD 
-      path: /test
+  project: default
+  source:
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+    path: guestbook
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: 'default' 
+    server: https://kubernetes.default.svc
+    namespace: guestbook
   syncPolicy:
     automated:
       prune: true
