@@ -1,9 +1,9 @@
 ---
-{{- range .Values.argocdApplications -}}
+{{- range $app := .Values.argocdApplications -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .name }} 
+  name: {{ $app.name }} 
   namespace: argocd
 spec:
   project: default
