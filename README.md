@@ -1,4 +1,4 @@
-ARGOCD - CHARTS
+CHARTS
 ============
 
 ## 💻 ArgoCD
