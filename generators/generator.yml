@@ -17,7 +17,7 @@ spec:
              repoURL: https://github.com/utilizable/charts
              revision: HEAD 
              files:
-               - path: '{{ env "ARGOCD_FILE" }}'
+               - path: '$ARGOCD_FILE'
                #- path: "./sets/infrastructure.yml"
          - list:
              elementsYaml: "{{ .applications | toYaml }}"
