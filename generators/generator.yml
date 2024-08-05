@@ -15,75 +15,33 @@ spec:
   generators:
     - matrix:
         generators:
-         - list:
-            elements:
-              - key1: infrastructure.yml
-         - matrix:
+          - list:
+              elements:
+                - key1: value1
+          - matrix:
               generators:
-                 - git:
-                     repoURL: https://github.com/utilizable/charts
-                     revision: HEAD 
-                     files:
-                       - path: '{{ .key1 }}'
-                 - list:
-                     elementsYaml: "{{ .applications | toYaml }}"
+                - list:
+                    elements:
+                      - key2: value2
+                - list:
+                    elements:
+                      - substitute1: '{{ .key1 }}'
+                        substitute2: '{{ .key2 }}'
   template:
     metadata:
-      name: '{{ .name }}'
+      name: '{{ .substitute1 }}'
     spec:
       project: 'default'
       destination:
         server: 'https://kubernetes.default.svc'
+      source:
+        repoURL: 'https://github.com/utilizable/charts'
+        targetRevision: HEAD
+        path: applications/{{ .substitute1 }}/manifests/
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-  templatePatch: |
-    metadata:
-      annotations:
-        {{- if hasKey . "priority" }}
-        argocd.argoproj.io/sync-wave: "{{ .priority }}"
-        {{- end }}
-    spec:
-      destination:
-        {{- if hasKey . "namespace" }}
-        namespace: {{ .namespace }} 
-        {{- else }}
-        namespace: {{ .name }} 
-        {{- end }}
-      sources:
-        - repoUrl: {{ .repoURL }} 
-          targetRevision: {{ .targetRevision }} 
-
-          {{- if hasKey . "chartPath" }}
-          path: {{ .chartPath }}
-          {{- end -}}
-
-          {{- if hasKey . "chartName" }}
-          chart: {{ .chartName }} 
-          {{- end -}}
-          
-          {{- if not (or (hasKey . "chartPath") (hasKey . "chartName")) }}
-          chart: {{ .name }}
-          {{- end }}
-
-          {{- if hasKey . "chartValues" }}
-          helm:
-            valueFiles:
-              - $values/applications/{{ .name }}/helm/values.yml
-          {{- end -}}
-
-        {{- if hasKey . "chartValues" }}
-        - repoURL: 'https://github.com/utilizable/charts'
-          targetRevision: HEAD
-          ref: values
-        {{- end -}}
-
-        {{- if hasKey . "manifests" }}
-        - repoURL: 'https://github.com/utilizable/charts'
-          targetRevision: HEAD
-          path: applications/{{ .name }}/manifests/
-        {{- end -}}
 ...
