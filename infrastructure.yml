@@ -1,0 +1,61 @@
+applications:
+
+    - name: sealed-secrets
+      #chartName:
+      #chartPath:
+      chartValues: true
+      targetRevision: 2.16.1
+      repoURL: https://bitnami-labs.github.io/sealed-secrets
+      manifests: true
+      namespace: kube-system
+      priority: -1
+      
+    - name: nvidia-device-plugin
+      #chartName:
+      #chartPath: 
+      chartValues: true
+      targetRevision: 0.16.0
+      repoURL: https://nvidia.github.io/k8s-device-plugin
+      manifests: true     
+      #namespace: 
+      #priority:
+      
+    - name: local-path-provisioner
+      #chartName:
+      chartPath: ./deploy/chart/local-path-provisioner 
+      #chartValues: 
+      targetRevision: v0.0.28 
+      repoURL: https://github.com/rancher/local-path-provisioner
+      #manifests: 
+      #namespace: 
+      #priority:
+      
+    - name: traefik
+      #chartName:
+      #chartPath:
+      chartValues: true
+      targetRevision: 30.0.2
+      repoURL: https://traefik.github.io/charts
+      manifests: true
+      namespace: kube-system
+      #priority:
+      
+#    - name: democratic-csi-nfs
+#      chartName: democratic-csi 
+#      #chartPath:
+#      chartValues: true
+#      targetRevision: 0.14.6 
+#      repoURL: https://democratic-csi.github.io/charts/
+#      manifests: true
+#      #namespace: 
+#      #priority:
+#     
+#    - name: democratic-csi-iscsi
+#      chartName: democratic-csi
+#      #chartPath:
+#      chartValues: true
+#      targetRevision: 0.14.6 
+#      repoURL: https://democratic-csi.github.io/charts/
+#      manifests: true
+#      #namespace:
+#      #priority:
