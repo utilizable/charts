@@ -13,19 +13,26 @@ spec:
   generators:
     - matrix:
         generators:
-         - list:
-            elements: []
-            elementsYaml: "{{ .applications | toYaml }}"
           - matrix:
               generators:
+               - git:
+                   repoURL: https://github.com/utilizable/charts
+                   revision: HEAD 
+                   files:
+                     - path: "sets/infrastructure.yml"        
+               - list:
+                  elements: []
+                  elementsYaml: "{{ .applications | toYaml }}"
+          - matrix:
+              generators:
+                - list:
+                    elements:
+                      - key1: ./sets/infrastructure.yml                 
                  - git:
                      repoURL: https://github.com/utilizable/charts
                      revision: HEAD 
                      files:
-                       - path: "sets/infrastructure.yml"
-                  - list:
-                      elements:
-                        - key1: ./sets/infrastructure.yml                       
+                       - path: "{{ .key1 }}"
   template:
     metadata:
       name: 'dd'
