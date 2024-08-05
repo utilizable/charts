@@ -13,9 +13,9 @@ spec:
   generators:
     - matrix:
         generators:
-             - list:
-                elements: []
-                elementsYaml: "{{ .applications | toYaml }}"
+         - list:
+            elements: []
+            elementsYaml: "{{ .applications | toYaml }}"
           - matrix:
               generators:
                  - git:
