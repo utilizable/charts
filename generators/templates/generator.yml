@@ -78,6 +78,6 @@ spec:
         {{- if hasKey . "manifests" }}
         - repoURL: 'https://github.com/utilizable/charts'
           targetRevision: HEAD
-          path: applications/{{ .name }}/manifests/
+          path: applications/{{ .name }}/manifests/*.yml
         {{- end -}}
 ...
