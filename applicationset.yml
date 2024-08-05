@@ -12,7 +12,7 @@ spec:
         repoURL: "https://github.com/utilizable/charts.git"
         revision: HEAD
         files:
-          - path: "products/list.yml"
+          - path: "products/products-list.yml"
   template:
     metadata:
       name: 'application'
