@@ -16,7 +16,7 @@ spec:
              files:
                - path: '{{ `{{ .Values.File }}` }}'
          - list:
-             elementsYaml: "{{ `{{ .applications | toYaml }}` }}"
+             elementsYaml: '{{ `{{ .applications | toYaml }}` }}'
   template:
     metadata:
       name: test
