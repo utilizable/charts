@@ -1,16 +1,3 @@
-global:
-  env: development
-  helmDefault: false
-  valuesFile: values.yaml
-  spec:
-    project: 'default' 
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: default
-    source:
-      repoURL: https://github.com/ranrubin/argocd-app-of-apps
-      targetRevision: HEAD
-
 applications:
   - name: test 
     disableAutomated: false
