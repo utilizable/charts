@@ -7,8 +7,6 @@ kind: ApplicationSet
 metadata:
   name: 'generator'
   namespace: 'argocd'
-  test:
-    file: infrastructure.yml
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -17,7 +15,7 @@ spec:
         generators:
           - list:
               elements:
-                - key1: value1
+                - key1: infrastructure.yml
           - matrix:
               generators:
                  - git:
