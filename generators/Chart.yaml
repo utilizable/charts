@@ -1,5 +1,4 @@
 apiVersion: v2
-name: test-9298
+name: test
 description: A Helm chart for Kubernetes
-type: application
-appVersion: "1.16.0"
+version: 1.0.0
