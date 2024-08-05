@@ -34,9 +34,9 @@ spec:
   templatepatch: |
     metadata:
       annotations:
-        {{ `{{- if haskey . "priority" }}` }}
-        argocd.argoproj.io/sync-wave: "{{ `{{ .priority }}` }}"
-        {{ `{{- end }}` }}
+        '{{ `{{- if haskey . "priority" }}` }}'
+        argocd.argoproj.io/sync-wave: "'{{ `{{ .priority }}` }}'"
+        '{{ `{{- end }}` }}'
     spec:
       destination:
         {{- if haskey . "namespace" }}
