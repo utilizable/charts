@@ -13,18 +13,18 @@ spec:
   generators:
   - matrix:
     generators:
-    - matrix:
-      - list:
-        elements:
-        - file: infrastructure.yml
-      generators:
-         - git:
-             repoURL: https://github.com/utilizable/charts
-             revision: HEAD 
-             files:
-               - path: '{{ .file }}'
-         - list:
-             elementsYaml: "{{ .applications | toYaml }}"
+     - matrix:
+       - list:
+         elements:
+         - file: infrastructure.yml
+        generators:
+           - git:
+               repoURL: https://github.com/utilizable/charts
+               revision: HEAD 
+               files:
+                 - path: '{{ .file }}'
+           - list:
+               elementsYaml: "{{ .applications | toYaml }}"
   template:
     metadata:
       name: '{{ .name }}'
