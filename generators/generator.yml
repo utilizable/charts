@@ -19,7 +19,7 @@ spec:
              repoURL: https://github.com/utilizable/charts
              revision: HEAD 
              files:
-               - path: '{{ .metadata.labels.file }}'
+               - path: '{{ . }}'
          - list:
              elementsYaml: "{{ .applications | toYaml }}"
   template:
