@@ -19,7 +19,7 @@ spec:
              elementsYaml: '{{ `{{ .applications | toYaml }}` }}'
   template:
     metadata:
-      name: test-app
+      name: test-appdd
     spec:
       project: default 
       destination:
