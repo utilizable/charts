@@ -1,2 +1,1 @@
-sets:
-  - infrastructure.yml
+- infrastructure.yml
