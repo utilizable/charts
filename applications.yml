@@ -9,7 +9,7 @@ spec:
   
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: generators/
+      path: generator/
       helm:
         values: |
             file: "sets/infrastructure.yml" 
@@ -17,7 +17,7 @@ spec:
 
     - repoURL: 'https://github.com/utilizable/charts'
       targetRevision: HEAD
-      path: generators/
+      path: generator/
       helm:
         values: |
             file: "sets/applications.yml" 
