@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gpu-sharing-config
+data:
+  config.yaml: |
+    version: v1
+    sharing:
+      mps:
+        resources:
+          - name: nvidia.com/gpu
+            replicas: 10
