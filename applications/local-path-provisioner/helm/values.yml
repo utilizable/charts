@@ -1,0 +1,26 @@
+# Create custom definied storage-classes
+storageClassConfigs: 
+
+  storage-local-delete:
+    storageClass:
+      create: true
+      defaultClass: false
+      defaultVolumeType: hostPath
+      reclaimPolicy: Delete
+      volumeBindingMode: WaitForFirstConsumer
+    sharedFileSystemPath: ""
+    ## OR
+    # See above
+    nodePathMap: {}
+
+  storage-local-retain:
+    storageClass:
+      create: true
+      defaultClass: false
+      defaultVolumeType: hostPath
+      reclaimPolicy: Retain 
+      volumeBindingMode: WaitForFirstConsumer
+    sharedFileSystemPath: ""
+    ## OR
+    # See above
+    nodePathMap: {}

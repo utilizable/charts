@@ -13,7 +13,7 @@ applications:
     - name: local-path-provisioner
       #chartName:
       chartPath: ./deploy/chart/local-path-provisioner 
-      #chartValues: 
+      chartValues: true
       targetRevision: v0.0.28 
       repoURL: https://github.com/rancher/local-path-provisioner
       #manifests: 
