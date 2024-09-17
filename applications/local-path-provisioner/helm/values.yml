@@ -7,7 +7,7 @@ storageClassConfigs:
       defaultClass: false
       defaultVolumeType: hostPath
       reclaimPolicy: Delete
-      volumeBindingMode: WaitForFirstConsumer
+      volumeBindingMode: Immediate
     sharedFileSystemPath: "/opt/storage-local-retain"
     ## OR
     # See above
@@ -22,7 +22,7 @@ storageClassConfigs:
       defaultClass: false
       defaultVolumeType: hostPath
       reclaimPolicy: Retain 
-      volumeBindingMode: WaitForFirstConsumer
+      volumeBindingMode: Immediate
     sharedFileSystemPath: "/opt/storage-local-retain"
     ## OR
     # See above
