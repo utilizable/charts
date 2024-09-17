@@ -11,7 +11,10 @@ storageClassConfigs:
     sharedFileSystemPath: ""
     ## OR
     # See above
-    nodePathMap: {}
+    nodePathMap:
+      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+        paths:
+          - /opt/storage-local-delete
 
   storage-local-retain:
     storageClass:
@@ -23,4 +26,7 @@ storageClassConfigs:
     sharedFileSystemPath: ""
     ## OR
     # See above
-    nodePathMap: {}
+    nodePathMap:
+      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+        paths:
+          - /opt/storage-local-retain
