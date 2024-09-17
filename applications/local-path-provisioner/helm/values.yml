@@ -8,13 +8,13 @@ storageClassConfigs:
       defaultVolumeType: hostPath
       reclaimPolicy: Delete
       volumeBindingMode: WaitForFirstConsumer
-    sharedFileSystemPath: ""
+    sharedFileSystemPath: "/opt/storage-local-retain"
     ## OR
     # See above
-    nodePathMap:
-      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
-        paths:
-          - /opt/storage-local-delete
+    #nodePathMap:
+    #  - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+    #    paths:
+    #      - /opt/storage-local-retain
 
   storage-local-retain:
     storageClass:
@@ -23,10 +23,10 @@ storageClassConfigs:
       defaultVolumeType: hostPath
       reclaimPolicy: Retain 
       volumeBindingMode: WaitForFirstConsumer
-    sharedFileSystemPath: ""
+    sharedFileSystemPath: "/opt/storage-local-retain"
     ## OR
     # See above
-    nodePathMap:
-      - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
-        paths:
-          - /opt/storage-local-retain
+    #nodePathMap:
+    #  - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+    #    paths:
+    #      - /opt/storage-local-retain
