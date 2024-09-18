@@ -7,6 +7,7 @@ additionalArguments:
   - "--api.dashboard=true"
   - "--log.level=debug"
   - "--providers.kubernetescrd"
+  - "--api.insecure=true"
   
   #- "--entrypoints.web.address=:8000"
   #- "--entrypoints.web.http.redirections.entrypoint.to=websecure"
